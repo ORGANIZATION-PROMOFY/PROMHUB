@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -8,12 +9,6 @@ const Tab = createBottomTabNavigator();
 const HomeScreen = () => (
   <View style={styles.layout}>
     <Text style={styles.title}>HomeScreen</Text>
-  </View>
-)
-
-const FeedScreen = () => (
-  <View style={styles.layout}>
-    <Text style={styles.title}>FeedScreen</Text>
   </View>
 )
 
@@ -30,11 +25,44 @@ const AccountScreen = () => (
 )
 
 const MainNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
-    <Tab.Screen name='Feed' component={FeedScreen} options={{ headerShown: false }} />
-    <Tab.Screen name='Catalog' component={CatalogScreen} options={{ headerShown: false }} />
-    <Tab.Screen name='Account' component={AccountScreen} options={{ headerShown: false }} />
+  <Tab.Navigator screenOptions={{
+    tabBarStyle: {
+      position: 'absolute',
+      bottom: 20,
+      left: 10,
+      right: 10,
+      borderRadius: 15,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 3,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 5,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    tabBarShowLabel: false,
+  }}
+  >
+    <Tab.Screen name='Home' component={HomeScreen} options={{ 
+      headerShown: false, 
+      tabBarIcon: () => (
+        <Ionicons name="home" size={25} color={'#9370DB'}/>
+      ),
+    }} />
+    <Tab.Screen name='Catalog' component={CatalogScreen} options={{ 
+      headerShown: false, 
+      tabBarIcon: () => (
+        <Ionicons name="search" size={25} color={'#9370DB'}/>
+      ),
+    }} />
+    <Tab.Screen name='Account' component={AccountScreen} options={{ 
+      headerShown: false, 
+      tabBarIcon: () => (
+        <Ionicons name="person" size={25} color={'#9370DB'}/>
+      ),
+    }} />
   </Tab.Navigator>
 )
 
