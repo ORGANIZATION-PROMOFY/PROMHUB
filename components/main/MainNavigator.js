@@ -39,8 +39,7 @@ const MainNavigator = () => (
       },
       shadowOpacity: 0.2,
       shadowRadius: 5,
-      alignItems: 'center',
-      justifyContent: 'center',
+      paddingBottom: -30,
     },
     tabBarShowLabel: false,
   }}
