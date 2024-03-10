@@ -1,147 +1,151 @@
-import * as React from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useFonts, Kanit_600SemiBold } from '@expo-google-fonts/kanit';
-import { OpenSans_400Regular } from '@expo-google-fonts/open-sans';
-import data from './data';
+import * as React from "react";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useFonts, Kanit_600SemiBold } from "@expo-google-fonts/kanit";
+import { OpenSans_400Regular } from "@expo-google-fonts/open-sans";
+import SearchBar from "../home-screen/SearchBar";
 
-const HomeScreen = () => {
-    const [fontsLoaded] = useFonts({
-        Kanit_600SemiBold: Kanit_600SemiBold,
-        OpenSans_400Regular: OpenSans_400Regular
-    });
+const HomeScreen = () => (
+  <View>
+    <Text>Hello</Text>
+    <SearchBar />
+  </View>
 
-    // Basic reusable components
+  // {const [fontsLoaded] = useFonts({
+  //     Kanit_600SemiBold: Kanit_600SemiBold,
+  //     OpenSans_400Regular: OpenSans_400Regular
+  // });
 
-    const Avatar = (props) => (
-        <Image
-            style={styles.avatar}
-            source={{ uri: props.url }}
-        />
-    );
+  // // Basic reusable components
 
-    const Heading = (props) => (
-        <Text style={styles.heading}>
-            {props.children}
-        </Text>
-    );
+  // const Avatar = (props) => (
+  //     <Image
+  //         style={styles.avatar}
+  //         source={{ uri: props.url }}
+  //     />
+  // );
 
-    const Title = (props) => (
-        <Text style={styles.title}>
-            {props.children}
-        </Text>
-    );
+  // const Heading = (props) => (
+  //     <Text style={styles.heading}>
+  //         {props.children}
+  //     </Text>
+  // );
 
-    const styles = StyleSheet.create({
-        avatar: {
-            width: 64,
-            height: 64,
-            borderRadius: '50%',
-        },
+  // const Title = (props) => (
+  //     <Text style={styles.title}>
+  //         {props.children}
+  //     </Text>
+  // );
 
-        heading: {
-            fontFamily: 'Kanit_600SemiBold',
-            fontSize: 20,
-            paddingTop: 20,
-            paddingBottom: 8,
-            color: '#08060B',
-        },
+  // const styles = StyleSheet.create({
+  //     avatar: {
+  //         width: 64,
+  //         height: 64,
+  //         borderRadius: '50%',
+  //     },
 
-        title: {
-            fontFamily: 'Kanit_600SemiBold',
-            fontSize: 12,
-            fontWeight: 600,
-            color: '#280D5F',
-            textTransform: 'uppercase',
-        }
-    });
+  //     heading: {
+  //         fontFamily: 'Kanit_600SemiBold',
+  //         fontSize: 20,
+  //         paddingTop: 20,
+  //         paddingBottom: 8,
+  //         color: '#08060B',
+  //     },
 
-    // App-specific components
+  //     title: {
+  //         fontFamily: 'Kanit_600SemiBold',
+  //         fontSize: 12,
+  //         fontWeight: 600,
+  //         color: '#280D5F',
+  //         textTransform: 'uppercase',
+  //     }
+  // });
 
-    const WoofCard = ({ name, avatar}) => (
-        <View style={woofCardStyles.card}>
-            <Avatar url={avatar}/>
-            <View style={woofCardStyles.title}>
-            <Title>{name}</Title>
-            </View>
-        </View>
-    );
+  // // App-specific components
 
-    const woofCardStyles = StyleSheet.create({
-        card: {
-            width: 88,
-            padding: 12,
-            margin: 12,
-            marginRight: 16,
-            marginLeft: 0,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'white',
-            
-            borderRadius: 12,
-            borderWidth: 1,
-            borderColor: '#E7E3EB',
+  // const WoofCard = ({ name, avatar}) => (
+  //     <View style={woofCardStyles.card}>
+  //         <Avatar url={avatar}/>
+  //         <View style={woofCardStyles.title}>
+  //         <Title>{name}</Title>
+  //         </View>
+  //     </View>
+  // );
 
-            shadowColor: '#E7E3EB',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 1,
-            shadowRadius: 1,
-        },
-        title: {
-            paddingTop: 12,
-        },
-    });
+  // const woofCardStyles = StyleSheet.create({
+  //     card: {
+  //         width: 88,
+  //         padding: 12,
+  //         margin: 12,
+  //         marginRight: 16,
+  //         marginLeft: 0,
+  //         justifyContent: 'center',
+  //         alignItems: 'center',
+  //         backgroundColor: 'white',
 
-    const WoofPost = ({ image, title, description }) => (
-        <View style={woofPostStyles.layout}>
-            <Image source={{ uri: image }} style={woofPostStyles.image}/>
-            <View style={woofPostStyles.content}>
-            <Title style={woofPostStyles.title}>{title}</Title>
-            <Text numberOfLines={2} style={woofPostStyles.description}>{description}</Text>
-            </View>
-        </View>
-    );
+  //         borderRadius: 12,
+  //         borderWidth: 1,
+  //         borderColor: '#E7E3EB',
 
-    const woofPostStyles = StyleSheet.create({
-        layout: {
-            flexDirection: 'row',
-            height: 70,
-            marginTop: 12,
-        },
-        image: {
-            flex: 1,
-            marginRight: 12,
-            resizeMode: 'cover',
-            borderRadius: 12,
-        },
-        content: {
-            flex: 2,
-            justifyContent: 'space-evenly',
-        },
-        title: {},
-        description: {
-            color: '#280D5F',
-            fontFamily: 'OpenSans_400Regular',
-        },
-    });
+  //         shadowColor: '#E7E3EB',
+  //         shadowOffset: { width: 0, height: 2 },
+  //         shadowOpacity: 1,
+  //         shadowRadius: 1,
+  //     },
+  //     title: {
+  //         paddingTop: 12,
+  //     },
+  // });
 
-    // The screen rendering everything
-    return (
-        <ScrollView style={{paddingHorizontal: 24}}>
-            <Heading>Trending Woofs</Heading>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {data.woofs.map(woofs => (
-                    <WoofCard key={woofs.id} name={woofs.name} avatar={woofs.avatar} />
-                ))}
-            </ScrollView>
-            <Heading>New woof posts</Heading>
-            <ScrollView>
-                {data.posts.map(post => (
-                    <WoofPost image={post.image} title={post.title} description={post.description}/>
-                ))}
-            </ScrollView>
-        </ScrollView>
-    );
-}
+  // const WoofPost = ({ image, title, description }) => (
+  //     <View style={woofPostStyles.layout}>
+  //         <Image source={{ uri: image }} style={woofPostStyles.image}/>
+  //         <View style={woofPostStyles.content}>
+  //         <Title style={woofPostStyles.title}>{title}</Title>
+  //         <Text numberOfLines={2} style={woofPostStyles.description}>{description}</Text>
+  //         </View>
+  //     </View>
+  // );
+
+  // const woofPostStyles = StyleSheet.create({
+  //     layout: {
+  //         flexDirection: 'row',
+  //         height: 70,
+  //         marginTop: 12,
+  //     },
+  //     image: {
+  //         flex: 1,
+  //         marginRight: 12,
+  //         resizeMode: 'cover',
+  //         borderRadius: 12,
+  //     },
+  //     content: {
+  //         flex: 2,
+  //         justifyContent: 'space-evenly',
+  //     },
+  //     title: {},
+  //     description: {
+  //         color: '#280D5F',
+  //         fontFamily: 'OpenSans_400Regular',
+  //     },
+  // });
+
+  // // The screen rendering everything
+  // return (
+  //     <ScrollView style={{paddingHorizontal: 24}}>
+  //         <Heading>Trending Woofs</Heading>
+  //         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+  //             {data.woofs.map(woofs => (
+  //                 <WoofCard key={woofs.id} name={woofs.name} avatar={woofs.avatar} />
+  //             ))}
+  //         </ScrollView>
+  //         <Heading>New woof posts</Heading>
+  //         <ScrollView>
+  //             {data.posts.map(post => (
+  //                 <WoofPost image={post.image} title={post.title} description={post.description}/>
+  //             ))}
+  //         </ScrollView>
+  //     </ScrollView>
+  // );}
+);
 
 export default HomeScreen;
-
