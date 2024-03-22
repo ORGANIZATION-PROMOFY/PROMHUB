@@ -24,10 +24,10 @@ const MainNavigator = () => (
   <Tab.Navigator
     screenOptions={{
       tabBarStyle: {
-        position: "absolute",
-        bottom: 20,
-        left: 10,
-        right: 10,
+        // position: "absolute",
+        // bottom: 20,
+        // left: 10,
+        // right: 10,
         borderRadius: 15,
         shadowColor: "#000",
         shadowOffset: {
