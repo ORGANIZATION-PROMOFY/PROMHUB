@@ -102,3 +102,4 @@ C:\Users\papar\source\repos\PROMHUB\PROMHUB\obj\Debug\net8.0\refint\PROMHUB.dll
 C:\Users\papar\source\repos\PROMHUB\PROMHUB\obj\Debug\net8.0\PROMHUB.pdb
 C:\Users\papar\source\repos\PROMHUB\PROMHUB\obj\Debug\net8.0\PROMHUB.genruntimeconfig.cache
 C:\Users\papar\source\repos\PROMHUB\PROMHUB\obj\Debug\net8.0\ref\PROMHUB.dll
+C:\Users\papar\source\repos\PROMHUB\PROMHUB\obj\Debug\net8.0\PROMHUB.sourcelink.json
