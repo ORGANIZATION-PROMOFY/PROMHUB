@@ -20,7 +20,7 @@ namespace PROMHUB.Controllers
             new ProductGet() { Id = 3, Name = "Product C", Price = 75.0, Discount = 0 , Photo = "Calculator_img"}
         });
 
-        private readonly string _imagesFolderPath = @"C:\Users\papar\Documents\PROMHUB";
+        private readonly string _imagesFolderPath = @"/data/img/";
 
         public ProductController(AppDbContext context)
         {
@@ -142,7 +142,7 @@ namespace PROMHUB.Controllers
         {
             if (!string.IsNullOrEmpty(imagePath))
             {
-                return $"file://{Path.Combine(_imagesFolderPath, imagePath)}";
+                return Path.Combine(_imagesFolderPath, imagePath);
             }
             return null;
         }

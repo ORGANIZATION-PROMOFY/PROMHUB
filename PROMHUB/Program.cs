@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using PROMHUB.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,5 +29,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Enable serving static files
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(app.Environment.ContentRootPath, "data", "img")),
+    RequestPath = "/data/img"
+});
 
 app.Run();
