@@ -143,7 +143,7 @@ namespace PROMHUB.Controllers
             if (!string.IsNullOrEmpty(imagePath))
             {
 
-                return $"https://localhost:7244/img/{imagePath}";
+                return $"http://localhost:7244/img/{imagePath}";
             }
             return null;
         }
