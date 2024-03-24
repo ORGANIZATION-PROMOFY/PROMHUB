@@ -143,7 +143,11 @@ namespace PROMHUB.Controllers
             if (!string.IsNullOrEmpty(imagePath))
             {
 
-                return $"http://localhost:7244/img/{imagePath}";
+                // Получаем порт текущего запроса
+                var port = HttpContext.Request.Host.Port;
+
+                // Формируем URL изображения с автоматически определенным портом
+                return $"http://localhost:{port}/img/{imagePath}";
             }
             return null;
         }
