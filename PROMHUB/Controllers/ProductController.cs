@@ -15,12 +15,12 @@ namespace PROMHUB.Controllers
         private readonly AppDbContext _context;
 
         private static List<ProductGet> products = new List<ProductGet>(new[] {
-            new ProductGet() { Id = 1, Name = "Product A", Price = 100.0, Discount = 10, Photo = "Calculator_img"},
-            new ProductGet() { Id = 2, Name = "Product B", Price = 50.0, Discount = 5, Photo = "Calculator_img" },
-            new ProductGet() { Id = 3, Name = "Product C", Price = 75.0, Discount = 0 , Photo = "Calculator_img"}
+            new ProductGet() { Id = 1, Name = "Product A", Price = 100.0, Discount = 10, Photo = "Calculator_img.png"},
+            new ProductGet() { Id = 2, Name = "Product B", Price = 50.0, Discount = 5, Photo = "Calculator_img.png" },
+            new ProductGet() { Id = 3, Name = "Product C", Price = 75.0, Discount = 0 , Photo = "Calculator_img.png"}
         });
 
-        private readonly string _imagesFolderPath = @"/data/img/";
+        private readonly string _imagesFolderPath = @"../Data/img/";
 
         public ProductController(AppDbContext context)
         {
@@ -124,14 +124,14 @@ namespace PROMHUB.Controllers
         private string SaveImageToFolder(byte[] imageBytes)
         {
             string fileName = Guid.NewGuid().ToString() + ".jpg";
-            string filePath = Path.Combine(_imagesFolderPath, fileName);
+            string filePath = Path.Combine(_imagesFolderPath, fileName);  // убрать _imagesFolderPath
             System.IO.File.WriteAllBytes(filePath, imageBytes);
             return fileName;
         }
 
         private void DeleteImage(string imagePath)
         {
-            string fullPath = Path.Combine(_imagesFolderPath, imagePath);
+            string fullPath = Path.Combine(_imagesFolderPath, imagePath); // убрать _imagesFolderPath
             if (System.IO.File.Exists(fullPath))
             {
                 System.IO.File.Delete(fullPath);
@@ -142,7 +142,8 @@ namespace PROMHUB.Controllers
         {
             if (!string.IsNullOrEmpty(imagePath))
             {
-                return Path.Combine(_imagesFolderPath, imagePath);
+
+                return $"https://localhost:7244/img/{imagePath}";
             }
             return null;
         }

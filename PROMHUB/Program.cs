@@ -34,8 +34,8 @@ app.MapControllers();
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
-        Path.Combine(app.Environment.ContentRootPath, "data", "img")),
-    RequestPath = "/data/img"
+        Path.Combine(app.Environment.ContentRootPath, "wwwroot", "img")),
+    RequestPath = "/img"
 });
 
 app.Run();

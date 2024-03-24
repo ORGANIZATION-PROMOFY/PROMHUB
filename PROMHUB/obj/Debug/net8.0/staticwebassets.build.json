@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "v3o2mU98fC0fe5P4Z4srmRq8lZELTTeActiJ/cloE+M=",
+  "Hash": "/88ZmXTSvILBkAndcUulpEb+mkvmCbmfvdcSnExosx8=",
   "Source": "PROMHUB",
   "BasePath": "_content/PROMHUB",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "PROMHUB\\wwwroot",
+      "Source": "PROMHUB",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
+      "BasePath": "_content/PROMHUB",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Calculator_img.PNG",
+      "SourceId": "PROMHUB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
+      "BasePath": "_content/PROMHUB",
+      "RelativePath": "img/Calculator_img.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Calculator_img.PNG"
+    }
+  ]
 }
