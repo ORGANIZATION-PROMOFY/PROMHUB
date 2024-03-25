@@ -36,5 +36,6 @@ namespace PROMHUB.Data
         public DbSet<ProductGet> ProductGets { get; set; }
         public DbSet<ProductPostPut> ProductPostPuts { get; set; }
 
+
     }
 }

@@ -22,7 +22,7 @@ namespace PROMHUB.Data.Models
         [StringLength(40)]
         public string ContactEmail { get; set; }
 
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
 
         // Навигационное свойство к таблице Company
         public Company Company { get; set; }
