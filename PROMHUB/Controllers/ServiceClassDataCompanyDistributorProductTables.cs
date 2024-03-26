@@ -17,9 +17,9 @@ namespace PROMHUB.Controllers
             _imageService = imageService; // Инициализируем службу ImageService
         }
 
-        public IEnumerable<CombinedDataCompanyDistributorProductTables> GetCombinedData()
+        public IEnumerable<List<CombinedDataCompanyDistributorProductTables>> GetCombinedData()
         {
-            var combinedData = from product in _context.Product
+            var combinedData = (from product in _context.Product
                                join productDistributor in _context.ProductDistributor on product.Id equals productDistributor.ProductId
                                join distributor in _context.Distributor on productDistributor.DistributorId equals distributor.Id
                                join company in _context.Company on distributor.CompanyId equals company.Id
@@ -49,9 +49,16 @@ namespace PROMHUB.Controllers
                                        ContactEmail = companyInfo.ContactEmail,
                                        Photo = _imageService.GetImageUrl(companyInfo.Photo)
                                    }
-                               };
+                               }).ToList();
 
-            return combinedData.ToList();
+            var chunkSize = 5;
+            var totalCount = combinedData.Count();
+            var pages = (int)Math.Ceiling((double)totalCount / chunkSize);
+
+            for (int i = 0; i < pages; i++)
+            {
+                yield return combinedData.Skip(i * chunkSize).Take(chunkSize).ToList();
+            }
         }
     }
 }
