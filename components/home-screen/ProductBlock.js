@@ -1,17 +1,30 @@
-import { View, FlatList } from 'react-native';
-import Distributor from './Distributor'
+import { View, FlatList } from "react-native";
+import Company from "./Company";
+import Product from "./Product";
 
-const ProductBlock = ({ company, query }) => {
-  const filteredProducts = company.products.filter((product) => 
-    product.name.toLowerCase().includes(query.toLowerCase())
-  )
+const ProductBlock = ({ products }) => {
+  const productsByCompany = {};
+
+  products.forEach((product) => {
+    const companyName = product.company.name;
+    if (!productsByCompany[companyName]) {
+      productsByCompany[companyName] = [];
+    }
+    productsByCompany[companyName].push(product);
+  });
 
   return (
     <View>
-      <Distributor company={company} products={filteredProducts} />
+      {Object.keys(productsByCompany).map((companyName, index) => (
+        <View key={index}>
+          <Company company={productsByCompany[companyName][0].company} />
+          {productsByCompany[companyName].map((product, productIndex) => (
+            <Product key={productIndex} product={product} />
+          ))}
+        </View>
+      ))}
     </View>
   );
 };
-
 
 export default ProductBlock;

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView } from "react-native";
 import SearchBar from "../home-screen/SearchBar";
 import SearchResult from "../home-screen/SearchResult";
 

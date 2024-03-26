@@ -4,19 +4,22 @@ const Product = ({ product }) => {
   const screenWidth = Dimensions.get("window").width;
   let productWidth = (screenWidth - 20 - 20) / 2;
 
+  const productObj = product.product;
+
   return (
     <View
-      key={product.id}
+      key={productObj.id}
       style={[
         styles.container,
-        product.id % 2 === 0 ? { marginRight: 0 } : { marginRight: 20 },
+        productObj.id % 2 === 0 ? { marginRight: 0 } : { marginRight: 20 },
         { width: productWidth },
       ]}
     >
-      <Image source={{ uri: product.image }} style={styles.img} />
+      <Image source={{ uri: productObj.photo }} style={styles.img} />
+
       <View style={styles.textBlock}>
-        <Text>{product.name}</Text>
-        <Text>{product.price}</Text>
+        <Text>{productObj.name}</Text>
+        <Text>{productObj.price}</Text>
       </View>
     </View>
   );
