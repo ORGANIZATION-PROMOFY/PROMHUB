@@ -26,20 +26,29 @@ namespace PROMHUB.Controllers
                                join companyInfo in _context.CompanyInfo on company.Id equals companyInfo.CompanyId
                                select new CombinedDataCompanyDistributorProductTables
                                {
-                                   ProductId = product.Id,
-                                   ProductName = product.Name,
-                                   ProductPrice = product.Price,
-                                   ProductPhoto = _imageService.GetImageUrl(product.Photo),
-                                   ProductDiscount = product.Discount,
-                                   DistributorId = distributor.Id,
-                                   DistributorAddress = distributor.AddressString,
-                                   DistributorRating = distributor.Rating,
-                                   CompanyId = company.Id,
-                                   CompanyName = company.Name,
-                                   CompanyDescription = companyInfo.Description,
-                                   CompanyContactPhone = companyInfo.ContactPhone,
-                                   CompanyContactEmail = companyInfo.ContactEmail,
-                                   CompanyPhoto = _imageService.GetImageUrl(companyInfo.Photo)
+                                   Product = new ProductData
+                                   {
+                                       Id = product.Id,
+                                       Name = product.Name,
+                                       Price = product.Price,
+                                       Photo = _imageService.GetImageUrl(product.Photo),
+                                       Discount = product.Discount
+                                   },
+                                   Distributor = new DistributorData
+                                   {
+                                       Id = distributor.Id,
+                                       Address = distributor.AddressString,
+                                       Rating = distributor.Rating
+                                   },
+                                   Company = new CompanyData
+                                   {
+                                       Id = company.Id,
+                                       Name = company.Name,
+                                       Description = companyInfo.Description,
+                                       ContactPhone = companyInfo.ContactPhone,
+                                       ContactEmail = companyInfo.ContactEmail,
+                                       Photo = _imageService.GetImageUrl(companyInfo.Photo)
+                                   }
                                };
 
             return combinedData.ToList();
