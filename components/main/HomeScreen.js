@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, Text } from "react-native";
 import SearchBar from "../home-screen/SearchBar";
 import SearchResult from "../home-screen/SearchResult";
 
@@ -11,10 +11,11 @@ const HomeScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={[styles.container, { marginTop: query ? 0 : 230 }]}>
+      {query ? null : <Text style={styles.header}>PROMHUB</Text>}
       <SearchBar onSearch={onSearch} />
       <SearchResult query={query} />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -22,6 +23,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     margin: 10,
+  },
+  header: {
+    marginHorizontal: "auto",
+    marginBottom: 80,
+    color: "#F5D21F",
+    fontSize: 50,
+    fontFamily: "Quicksand-SemiBold",
   },
 });
 

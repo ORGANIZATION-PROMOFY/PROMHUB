@@ -1,4 +1,4 @@
-import { View, FlatList } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import Company from "./Company";
 import Product from "./Product";
 
@@ -16,15 +16,27 @@ const ProductBlock = ({ products }) => {
   return (
     <View>
       {Object.keys(productsByCompany).map((companyName, index) => (
-        <View key={index}>
+        <View key={index} style={styles.container}>
           <Company company={productsByCompany[companyName][0].company} />
-          {productsByCompany[companyName].map((product, productIndex) => (
-            <Product key={productIndex} product={product} />
-          ))}
+          <ScrollView horizontal style={styles.companyContainer}>
+            {productsByCompany[companyName].map((product, productIndex) => (
+              <Product key={productIndex} product={product.product} />
+            ))}
+          </ScrollView>
         </View>
       ))}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    marginBottom: 30,
+  },
+  companyContainer: {
+    flexGrow: 0,
+    flexDirection: "row",
+  },
+});
 
 export default ProductBlock;

@@ -46,7 +46,7 @@ const MainNavigator = () => (
       component={HomeScreen}
       options={{
         headerShown: false,
-        tabBarIcon: () => <Ionicons name="home" size={25} color={"#9370DB"} />,
+        tabBarIcon: () => <Ionicons name="home" size={25} color={"#F5D21F"} />,
       }}
     />
     <Tab.Screen
@@ -55,7 +55,7 @@ const MainNavigator = () => (
       options={{
         headerShown: false,
         tabBarIcon: () => (
-          <Ionicons name="search" size={25} color={"#9370DB"} />
+          <Ionicons name="search" size={25} color={"#F5D21F"} />
         ),
       }}
     />
@@ -65,7 +65,7 @@ const MainNavigator = () => (
       options={{
         headerShown: false,
         tabBarIcon: () => (
-          <Ionicons name="person" size={25} color={"#9370DB"} />
+          <Ionicons name="person" size={25} color={"#F5D21F"} />
         ),
       }}
     />

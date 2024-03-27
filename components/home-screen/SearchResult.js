@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import { View, ScrollView, StyleSheet, Text } from "react-native";
 import ProductBlock from "./ProductBlock";
 import data from "../data/mock";
 
@@ -11,7 +11,8 @@ const SearchResult = ({ query }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5275/api/CombinedDataCompanyDistributorProductTables"
+          "http://192.168.1.18:5275/api/CombinedDataCompanyDistributorProductTables",
+          { timeout: 1000 }
         );
         if (!response.ok) {
           throw new Error("Empty response received");
@@ -44,16 +45,22 @@ const SearchResult = ({ query }) => {
   }, [query, allData]);
 
   return (
-    <ScrollView style={styles.container}>
-      {filteredData.map((chunk, index) => (
-        <ProductBlock key={index} products={chunk} />
-      ))}
-    </ScrollView>
+    <View style={styles.container}>
+      {query && (
+        <ScrollView>
+          {filteredData.map((chunk, index) => (
+            <ProductBlock key={index} products={chunk} />
+          ))}
+        </ScrollView>
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginTop: 10,
+  },
 });
 
 export default SearchResult;
