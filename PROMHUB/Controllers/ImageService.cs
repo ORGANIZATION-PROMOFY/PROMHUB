@@ -23,6 +23,7 @@ namespace PROMHUB.Controllers
 
             // Формируем URL изображения с автоматически определенным портом
             return $"http://localhost:{port}/img/{imagePath}";
+            // return $"http://192.168.1.18:{port}/img/{imagePath}";
         }
     }
 }

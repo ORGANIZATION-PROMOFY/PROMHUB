@@ -1,8 +1,44 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Calculator_img.PNG",
-      "PackagePath": "staticwebassets\\img\\Calculator_img.PNG"
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Apples.jpg",
+      "PackagePath": "staticwebassets\\img\\Apples.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Apples2.jpg",
+      "PackagePath": "staticwebassets\\img\\Apples2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Apples3.jpg",
+      "PackagePath": "staticwebassets\\img\\Apples3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Apples4.jpg",
+      "PackagePath": "staticwebassets\\img\\Apples4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Bananas.jpg",
+      "PackagePath": "staticwebassets\\img\\Bananas.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Grapes.jpg",
+      "PackagePath": "staticwebassets\\img\\Grapes.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Lidl.PNG",
+      "PackagePath": "staticwebassets\\img\\Lidl.PNG"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Maxima.PNG",
+      "PackagePath": "staticwebassets\\img\\Maxima.PNG"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Mego.PNG",
+      "PackagePath": "staticwebassets\\img\\Mego.PNG"
+    },
+    {
+      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\Backend\\PROMHUB\\wwwroot\\img\\Rimi.PNG",
+      "PackagePath": "staticwebassets\\img\\Rimi.PNG"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PROMHUB.Microsoft.AspNetCore.StaticWebAssets.props",
