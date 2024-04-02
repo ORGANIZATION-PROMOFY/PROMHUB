@@ -6,14 +6,16 @@ import {
   Text,
   Modal,
   Animated,
+  Pressable,
 } from "react-native";
 import SearchBar from "../home-screen/SearchBar";
 import SearchResult from "../home-screen/SearchResult";
 
 const HomeScreen = () => {
   const [query, setQuery] = useState("");
-  const paddingTopAnim = useRef(new Animated.Value(230)).current; // Используем useRef для сохранения значения между рендерами
+  const [modalVisible, setModalVisible] = useState(false);
 
+  const paddingTopAnim = useRef(new Animated.Value(230)).current; // Используем useRef для сохранения значения между рендерами
   useEffect(() => {
     Animated.timing(paddingTopAnim, {
       toValue: query ? 0 : 230,
@@ -29,11 +31,24 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Animated.View style={{ paddingTop: paddingTopAnim }}>
+        <Pressable onPress={() => setModalVisible(!modalVisible)}>
+          <Text>Click</Text>
+        </Pressable>
         <View style={styles.center}>
           {query ? null : <Text style={styles.header}>PROMHUB</Text>}
           <SearchBar onSearch={onSearch} />
         </View>
         <SearchResult query={query} />
+        <Modal animationType="slide" visible={modalVisible} transparent={true}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text>Hello</Text>
+              <Pressable onPress={() => setModalVisible(!modalVisible)}>
+                <Text>Back</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
       </Animated.View>
     </SafeAreaView>
   );
@@ -42,7 +57,6 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
   },
   center: {
     alignItems: "center",
@@ -52,6 +66,15 @@ const styles = StyleSheet.create({
     color: "#F5D21F",
     fontSize: 50,
     fontFamily: "Quicksand-SemiBold",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+  modalContent: {
+    height: "60%",
+    backgroundColor: "grey",
+    borderRadius: 8,
   },
 });
 
