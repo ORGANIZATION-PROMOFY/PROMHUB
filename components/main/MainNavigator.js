@@ -40,6 +40,7 @@ const MainNavigator = () => (
       },
       tabBarShowLabel: false,
     }}
+    style={{ backgroundColor: "white" }}
   >
     <Tab.Screen
       name="Home"

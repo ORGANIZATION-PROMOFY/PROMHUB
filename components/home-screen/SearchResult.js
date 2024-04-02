@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
-import { View, ScrollView, StyleSheet, Text } from "react-native";
+import { useState, useEffect, useRef } from "react";
+import { View, ScrollView, StyleSheet, Animated } from "react-native";
 import ProductBlock from "./ProductBlock";
-import data from "../data/mock";
 
 const SearchResult = ({ query }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [allData, setAllData] = useState(null);
+  const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://192.168.1.18:5275/api/CombinedDataCompanyDistributorProductTables",
-          { timeout: 1000 }
+          "http://192.168.1.18:5275/api/CombinedDataCompanyDistributorProductTables"
         );
         if (!response.ok) {
           throw new Error("Empty response received");
@@ -44,8 +43,16 @@ const SearchResult = ({ query }) => {
     }
   }, [query, allData]);
 
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: query ? 1 : 0, // Целевое значение прозрачности
+      duration: 500, // Продолжительность анимации
+      useNativeDriver: true, // Использовать нативный драйвер для лучшей производительности
+    }).start();
+  }, [query, fadeAnim]);
+
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
       {query && (
         <ScrollView>
           {filteredData.map((chunk, index) => (
@@ -53,13 +60,14 @@ const SearchResult = ({ query }) => {
           ))}
         </ScrollView>
       )}
-    </View>
+    </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
+    paddingHorizontal: 10,
   },
 });
 

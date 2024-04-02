@@ -11,7 +11,7 @@ const Company = ({ company }) => {
         <Text style={styles.name}>{company.name}</Text>
         <View style={styles.adress}>
           <Ionicons name="location-sharp" size={15} color={"#F5D21F"} />
-          <Text>Aleksandra Biezina iela 1-10</Text>
+          <Text style={styles.adressText}>Aleksandra Biezina iela 1-10</Text>
         </View>
       </View>
     </View>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   name: {
-    fontFamily: "EuclidCircularB-SemiBold",
+    fontFamily: "Roboto-Medium",
   },
   text: {
     flexDirection: "column",
@@ -40,7 +40,10 @@ const styles = StyleSheet.create({
   adress: {
     flexDirection: "row",
     alignItems: "center",
-    fontFamily: "EuclidCircularB-Regular",
+  },
+  adressText: {
+    fontFamily: "Roboto-Light",
+    color: "#808089",
   },
 });
 

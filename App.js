@@ -11,6 +11,9 @@ const customFonts = {
   "EuclidCircularB-Regular": require("./assets/fonts/EuclidCircularB/EuclidCircularB-Regular.ttf"),
   "Quicksand-Regular": require("./assets/fonts/Quicksand/Quicksand-Regular.ttf"),
   "Quicksand-SemiBold": require("./assets/fonts/Quicksand/Quicksand-SemiBold.ttf"),
+  "Montserrat-Medium": require("./assets/fonts/Montserrat/Montserrat-Medium.ttf"),
+  "Roboto-Medium": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
+  "Roboto-Light": require("./assets/fonts/Roboto/Roboto-Light.ttf"),
 };
 
 const Stack = createStackNavigator();
@@ -22,7 +25,7 @@ export default function App() {
     return null; // Отобразить заглушку или спиннер загрузки, пока шрифты загружаются
   }
   return (
-    <NavigationContainer>
+    <NavigationContainer styles={styles.container}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {/* <Stack.Screen name='SignIn' component={SignIn} /> */}
         <Stack.Screen name="Main" component={MainNavigator} />
@@ -33,9 +36,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white",
   },
 });

@@ -18,7 +18,7 @@ const ProductBlock = ({ products }) => {
       {Object.keys(productsByCompany).map((companyName, index) => (
         <View key={index} style={styles.container}>
           <Company company={productsByCompany[companyName][0].company} />
-          <ScrollView horizontal style={styles.companyContainer}>
+          <ScrollView horizontal pagingEnabled style={styles.companyContainer}>
             {productsByCompany[companyName].map((product, productIndex) => (
               <Product key={productIndex} product={product.product} />
             ))}
