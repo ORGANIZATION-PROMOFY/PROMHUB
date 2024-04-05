@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { View, ScrollView, StyleSheet, Animated } from "react-native";
 import ProductBlock from "./ProductBlock";
 
-const SearchResult = ({ query }) => {
+const SearchResult = ({ query, onTogle }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [allData, setAllData] = useState(null);
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -54,9 +54,9 @@ const SearchResult = ({ query }) => {
   return (
     <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
       {query && (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {filteredData.map((chunk, index) => (
-            <ProductBlock key={index} products={chunk} />
+            <ProductBlock key={index} products={chunk} onTogle={onTogle} />
           ))}
         </ScrollView>
       )}

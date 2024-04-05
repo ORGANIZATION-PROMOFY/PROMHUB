@@ -12,6 +12,7 @@ const customFonts = {
   "Quicksand-Regular": require("./assets/fonts/Quicksand/Quicksand-Regular.ttf"),
   "Quicksand-SemiBold": require("./assets/fonts/Quicksand/Quicksand-SemiBold.ttf"),
   "Montserrat-Medium": require("./assets/fonts/Montserrat/Montserrat-Medium.ttf"),
+  "Montserrat-Regular": require("./assets/fonts/Montserrat/Montserrat-Regular.ttf"),
   "Roboto-Medium": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
   "Roboto-Light": require("./assets/fonts/Roboto/Roboto-Light.ttf"),
 };

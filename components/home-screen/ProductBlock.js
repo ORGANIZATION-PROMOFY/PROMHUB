@@ -2,7 +2,7 @@ import { View, ScrollView, StyleSheet } from "react-native";
 import Company from "./Company";
 import Product from "./Product";
 
-const ProductBlock = ({ products }) => {
+const ProductBlock = ({ products, onTogle }) => {
   const productsByCompany = {};
 
   products.forEach((product) => {
@@ -20,7 +20,11 @@ const ProductBlock = ({ products }) => {
           <Company company={productsByCompany[companyName][0].company} />
           <ScrollView horizontal pagingEnabled style={styles.companyContainer}>
             {productsByCompany[companyName].map((product, productIndex) => (
-              <Product key={productIndex} product={product.product} />
+              <Product
+                key={productIndex}
+                product={product.product}
+                onTogle={() => onTogle(product.product)}
+              />
             ))}
           </ScrollView>
         </View>

@@ -2,8 +2,6 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const Company = ({ company }) => {
-  console.log("company", company);
-
   return (
     <View style={styles.container}>
       <Image source={{ uri: company.photo }} style={styles.img} />

@@ -11,7 +11,7 @@ import discountImg from "../data/discountImg.png";
 import like from "../data/like.png";
 import plus from "../data/plus.png";
 
-const Product = ({ product }) => {
+const Product = ({ product, onTogle }) => {
   const screenWidth = Dimensions.get("window").width;
   let productWidth = (screenWidth - 50) / 2;
 
@@ -25,26 +25,29 @@ const Product = ({ product }) => {
         { width: productWidth },
       ]}
     >
-      <Image source={{ uri: product.photo }} style={styles.img} />
-      <View style={styles.discountContainer}>
-        <Image source={discountImg} style={styles.discountImg} />
-        <Text style={styles.discount}>{product.discount}%</Text>
-      </View>
+      <Pressable onPress={onTogle} style={styles.pressableContainer}>
+        <Image source={{ uri: product.photo }} style={styles.img} />
+        <View style={styles.discountContainer}>
+          <Image source={discountImg} style={styles.discountImg} />
+          <Text style={styles.discount}>{product.discount}%</Text>
+        </View>
 
-      <View style={styles.textBlock}>
-        <View style={styles.nameBlock}>
-          <Text style={styles.name}>{product.name}</Text>
+        <View style={styles.textBlock}>
+          <View style={styles.nameBlock}>
+            <Text style={styles.name}>{product.name}</Text>
+          </View>
+          <View style={styles.priceBlock}>
+            <Text style={styles.price}>
+              {(
+                product.price -
+                (product.price / 100) * product.discount
+              ).toFixed(2)}
+              €
+            </Text>
+            <Text style={styles.prevPrice}>{product.price}€</Text>
+          </View>
         </View>
-        <View style={styles.priceBlock}>
-          <Text style={styles.price}>
-            {(product.price - (product.price / 100) * product.discount).toFixed(
-              2
-            )}
-            €
-          </Text>
-          <Text style={styles.prevPrice}>{product.price}€</Text>
-        </View>
-      </View>
+      </Pressable>
       <View style={styles.btnBlock}>
         <Pressable>
           <Image source={like} style={{ width: 28, height: 28 }} />
@@ -60,17 +63,20 @@ const Product = ({ product }) => {
 const styles = StyleSheet.create({
   container: {
     height: 200,
-    backgroundColor: "#FAFAFA",
+    backgroundColor: "white",
     borderRadius: 8,
+  },
+  pressableContainer: {
+    height: "83%",
   },
   img: {
-    height: "50%",
+    height: "60%",
     width: "100%",
     borderRadius: 8,
-    // resizeMode: 'contain',
+    resizeMode: "contain",
   },
   textBlock: {
-    height: "30%",
+    height: "40%",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -86,7 +92,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   discount: {
-    fontWeight: "bold",
     color: "white",
     fontSize: 12,
     textAlign: "center",
@@ -117,10 +122,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   btnBlock: {
-    height: "20%",
+    height: "17%",
     paddingHorizontal: 20,
     justifyContent: "space-between",
     flexDirection: "row",
+    alignItems: "flex-start",
   },
 });
 

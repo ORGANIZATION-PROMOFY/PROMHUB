@@ -10,10 +10,12 @@ import {
 } from "react-native";
 import SearchBar from "../home-screen/SearchBar";
 import SearchResult from "../home-screen/SearchResult";
+import ProductDescription from "../home-screen/ProductDescription";
 
 const HomeScreen = () => {
   const [query, setQuery] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
+  const [productData, setProductData] = useState([]);
 
   const paddingTopAnim = useRef(new Animated.Value(230)).current; // Используем useRef для сохранения значения между рендерами
   useEffect(() => {
@@ -28,26 +30,25 @@ const HomeScreen = () => {
     setQuery(searchQuery);
   };
 
+  const onProductSelect = (product) => {
+    setProductData(product);
+    setModalVisible(true);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <Animated.View style={{ paddingTop: paddingTopAnim }}>
-        <Pressable onPress={() => setModalVisible(!modalVisible)}>
-          <Text>Click</Text>
-        </Pressable>
+      <Animated.View style={{ marginTop: paddingTopAnim }}>
+        {modalVisible && <View style={styles.overlay} />}
         <View style={styles.center}>
           {query ? null : <Text style={styles.header}>PROMHUB</Text>}
           <SearchBar onSearch={onSearch} />
         </View>
-        <SearchResult query={query} />
+        <SearchResult query={query} onTogle={onProductSelect} />
         <Modal animationType="slide" visible={modalVisible} transparent={true}>
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Text>Hello</Text>
-              <Pressable onPress={() => setModalVisible(!modalVisible)}>
-                <Text>Back</Text>
-              </Pressable>
-            </View>
-          </View>
+          <ProductDescription
+            productData={productData}
+            onModalVisible={() => setModalVisible(!modalVisible)}
+          />
         </Modal>
       </Animated.View>
     </SafeAreaView>
@@ -67,14 +68,16 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontFamily: "Quicksand-SemiBold",
   },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
-  modalContent: {
-    height: "60%",
-    backgroundColor: "grey",
-    borderRadius: 8,
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 100,
   },
 });
 
