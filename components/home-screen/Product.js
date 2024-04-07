@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,14 +7,65 @@ import {
   Image,
   Button,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 import discountImg from "../data/discountImg.png";
-import like from "../data/like.png";
-import plus from "../data/plus.png";
 
 const Product = ({ product, onTogle }) => {
   const screenWidth = Dimensions.get("window").width;
   let productWidth = (screenWidth - 50) / 2;
+
+  const [count, setCount] = useState(0);
+  const animationWidth = useSharedValue(0);
+  const rotation = useSharedValue(0);
+
+  const handlePlus = () => {
+    setCount((prev) => prev + 1);
+    if (count === 0) {
+      rotation.value = withTiming(rotation.value + 180, {
+        duration: 400,
+      });
+    }
+    if (animationWidth.value === 0) {
+      animationWidth.value = withTiming(100);
+    }
+  };
+
+  const handleMinus = () => {
+    setCount((prev) => {
+      if (prev > 0) {
+        const nextCount = prev - 1;
+        if (nextCount === 0) {
+          rotation.value = withTiming(rotation.value - 180, { duration: 400 });
+          animationWidth.value = withTiming(0);
+        }
+        return nextCount;
+      }
+      return prev;
+    });
+  };
+
+  const rotateStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          rotate: `${rotation.value}deg`,
+        },
+      ],
+    };
+  });
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    width: animationWidth.value,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  }));
 
   return (
     <View
@@ -49,12 +101,19 @@ const Product = ({ product, onTogle }) => {
         </View>
       </Pressable>
       <View style={styles.btnBlock}>
-        <Pressable>
-          <Image source={like} style={{ width: 28, height: 28 }} />
-        </Pressable>
-        <Pressable>
-          <Image source={plus} style={{ width: 28, height: 28 }} />
-        </Pressable>
+        <Animated.View style={animatedStyle}>
+          <TouchableOpacity onPress={handleMinus} disabled={count === 0}>
+            <Text style={styles.oppText}>−</Text>
+          </TouchableOpacity>
+          <View style={styles.countContainer}>
+            <Text style={styles.countText}>{count}</Text>
+          </View>
+        </Animated.View>
+        <Animated.View style={rotateStyle}>
+          <TouchableOpacity onPress={handlePlus} style={styles.oppButton}>
+            <Text style={styles.oppText}>+</Text>
+          </TouchableOpacity>
+        </Animated.View>
       </View>
     </View>
   );
@@ -67,16 +126,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   pressableContainer: {
-    height: "83%",
+    height: "81%",
   },
   img: {
-    height: "60%",
+    height: "65%",
     width: "100%",
     borderRadius: 8,
     resizeMode: "contain",
   },
   textBlock: {
-    height: "40%",
+    height: "35%",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -122,11 +181,28 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   btnBlock: {
-    height: "17%",
+    height: "19%",
     paddingHorizontal: 20,
-    justifyContent: "space-between",
     flexDirection: "row",
-    alignItems: "flex-start",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  oppText: {
+    fontSize: 35,
+    color: "#F5D21F",
+    lineHeight: 35,
+    textAlign: "center",
+  },
+  oppButton: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  countContainer: {
+    marginLeft: "35%",
+  },
+  countText: {
+    fontFamily: "Montserrat-Medium",
+    fontSize: 20,
   },
 });
 
