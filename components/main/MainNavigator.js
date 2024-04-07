@@ -8,15 +8,15 @@ const Tab = createBottomTabNavigator();
 
 // --- Main screens ---
 
-const CatalogScreen = () => (
-  <View style={styles.layout}>
-    <Text style={styles.title}>CatalogScreen</Text>
-  </View>
-);
-
 const AccountScreen = () => (
   <View style={styles.layout}>
     <Text style={styles.title}>AccountScreen</Text>
+  </View>
+);
+
+const OrderScreen = () => (
+  <View style={styles.layout}>
+    <Text style={styles.title}>OrderScreen</Text>
   </View>
 );
 
@@ -47,26 +47,40 @@ const MainNavigator = () => (
       component={HomeScreen}
       options={{
         headerShown: false,
-        tabBarIcon: () => <Ionicons name="home" size={25} color={"#F5D21F"} />,
+        tabBarIcon: ({ focused }) => (
+          <Ionicons
+            name={focused ? "home" : "home-outline"}
+            size={25}
+            color={"#F5D21F"}
+          />
+        ),
       }}
     />
     <Tab.Screen
       name="Catalog"
-      component={CatalogScreen}
+      component={AccountScreen}
       options={{
         headerShown: false,
-        tabBarIcon: () => (
-          <Ionicons name="search" size={25} color={"#F5D21F"} />
+        tabBarIcon: ({ focused }) => (
+          <Ionicons
+            name={focused ? "person" : "person-outline"}
+            size={25}
+            color={"#F5D21F"}
+          />
         ),
       }}
     />
     <Tab.Screen
       name="Account"
-      component={AccountScreen}
+      component={OrderScreen}
       options={{
         headerShown: false,
-        tabBarIcon: () => (
-          <Ionicons name="person" size={25} color={"#F5D21F"} />
+        tabBarIcon: ({ focused }) => (
+          <Ionicons
+            name={focused ? "bookmark" : "bookmark-outline"}
+            size={25}
+            color={"#F5D21F"}
+          />
         ),
       }}
     />
