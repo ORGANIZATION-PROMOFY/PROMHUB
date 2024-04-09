@@ -47,9 +47,9 @@ const SearchResult = ({ query, onTogle }) => {
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
-      toValue: query ? 1 : 0, // Целевое значение прозрачности
-      duration: 500, // Продолжительность анимации
-      useNativeDriver: true, // Использовать нативный драйвер для лучшей производительности
+      toValue: query ? 1 : 0,
+      duration: 500,
+      useNativeDriver: true,
     }).start();
   }, [query, fadeAnim]);
 

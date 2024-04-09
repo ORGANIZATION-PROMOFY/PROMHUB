@@ -46,7 +46,7 @@ const HomeScreen = () => {
         <SearchResult query={query} onTogle={onProductSelect} />
         <Modal animationType="slide" visible={modalVisible} transparent={true}>
           <ProductDescription
-            productData={productData}
+            product={productData}
             onModalVisible={() => setModalVisible(!modalVisible)}
           />
         </Modal>

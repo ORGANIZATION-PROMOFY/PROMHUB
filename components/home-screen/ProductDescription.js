@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const Product = ({ onModalVisible, productData }) => {
+const Product = ({ onModalVisible, product }) => {
   const [count, setCount] = useState(0);
 
   return (
@@ -18,19 +18,19 @@ const Product = ({ onModalVisible, productData }) => {
         <Pressable style={styles.closeBtn} onPress={onModalVisible}>
           <Ionicons name="close" size={36} color={"black"} />
         </Pressable>
-        <Image source={{ uri: productData.photo }} style={styles.img} />
+        <Image source={{ uri: product.photo }} style={styles.img} />
         <View style={styles.contentBlock}>
           <View style={styles.textBlock}>
-            <Text style={styles.name}>{productData.name}</Text>
+            <Text style={styles.name}>{product.name}</Text>
             <View style={styles.priceBlock}>
               <Text style={styles.price}>
                 {(
-                  productData.price -
-                  (productData.price / 100) * productData.discount
+                  product.price -
+                  (product.price / 100) * product.discount
                 ).toFixed(2)}
                 €
               </Text>
-              <Text style={styles.prevPrice}>{productData.price}€</Text>
+              <Text style={styles.prevPrice}>{product.price}€</Text>
             </View>
             <Text>
               Lorem Ipsum is simply dummy text of the printing and typesetting
