@@ -16,7 +16,7 @@ import Animated, {
 } from "react-native-reanimated";
 import discountImg from "../data/discountImg.png";
 
-const Product = ({ product, onTogle }) => {
+const Product = ({ product, onTogle, marginRight }) => {
   const screenWidth = Dimensions.get("window").width;
   let productWidth = (screenWidth - 50) / 2;
 
@@ -73,8 +73,11 @@ const Product = ({ product, onTogle }) => {
       id="productsss"
       style={[
         styles.container,
-        product.id % 2 !== 0 ? { marginRight: 0 } : { marginRight: 30 },
-        { width: productWidth },
+
+        {
+          width: productWidth,
+          marginRight: marginRight ? 30 : 0,
+        },
       ]}
     >
       <Pressable onPress={onTogle} style={styles.pressableContainer}>

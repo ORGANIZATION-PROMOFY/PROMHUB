@@ -3,6 +3,8 @@ import { View, ScrollView, StyleSheet, Animated } from "react-native";
 import ProductBlock from "./ProductBlock";
 
 const SearchResult = ({ query, onTogle }) => {
+  const url = "192.168.1.18";
+
   const [filteredData, setFilteredData] = useState([]);
   const [allData, setAllData] = useState(null);
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -11,7 +13,7 @@ const SearchResult = ({ query, onTogle }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://192.168.1.18:5275/api/CombinedDataCompanyDistributorProductTables"
+          `http://${url}:5275/api/CombinedDataCompanyDistributorProductTables`
         );
         if (!response.ok) {
           throw new Error("Empty response received");

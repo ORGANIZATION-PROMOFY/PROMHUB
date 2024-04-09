@@ -18,12 +18,20 @@ const ProductBlock = ({ products, onTogle }) => {
       {Object.keys(productsByCompany).map((companyName, index) => (
         <View key={index} style={styles.container}>
           <Company company={productsByCompany[companyName][0].company} />
-          <ScrollView horizontal pagingEnabled style={styles.companyContainer}>
+          <ScrollView
+            style={styles.companyContainer}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+          >
             {productsByCompany[companyName].map((product, productIndex) => (
               <Product
-                key={productIndex}
+                key={product.id}
                 product={product.product}
                 onTogle={() => onTogle(product.product)}
+                marginRight={
+                  productIndex % 2 === 0 && productIndex !== products.length - 1
+                }
               />
             ))}
           </ScrollView>
