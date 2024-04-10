@@ -1,26 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PROMHUB.Data;
 using PROMHUB.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace PROMHUB.Controllers
+
 {
     [Route("api/[controller]")]
     public class CompanyController : Controller
     {
-        private static List<Company> companies = new List<Company>(new[] {
-            new Company() { Id = 1, Name = "Company A" },
-            new Company() { Id = 2, Name = "Company B" },
-            new Company() { Id = 3, Name = "Company C" }
-        });
+    private readonly AppDbContext _context;
+
+        public CompanyController(AppDbContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
-        public IEnumerable<Company> Get() => companies;
+        public async Task<IEnumerable<Company>> GetAsync()
+        {
+            return await _context.Company.ToListAsync();
+        }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var company = companies.SingleOrDefault(p => p.Id == id);
+            var company = await _context.Company.FindAsync(id);
             if (company == null)
             {
                 return NotFound();
@@ -28,41 +35,41 @@ namespace PROMHUB.Controllers
             return Ok(company);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            companies.Remove(companies.SingleOrDefault(p => p.Id == id));
-            return Ok();
-        }
+        //[HttpDelete("{id}")]
+        //public IActionResult Delete(int id)
+        //{
+        //    companies.Remove(companies.SingleOrDefault(p => p.Id == id));
+        //    return Ok();
+        //}
 
-        [HttpPost]
-        public IActionResult Post([FromBody] Company newCompany)
-        {
-            if (newCompany == null)
-            {
-                return BadRequest("Invalid data");
-            }
-            newCompany.Id = companies.Max(p => p.Id) + 1;
-            companies.Add(newCompany);
-            return CreatedAtAction(nameof(Get), new { id = newCompany.Id }, newCompany);
-        }
+        //[HttpPost]
+        //public IActionResult Post([FromBody] Company newCompany)
+        //{
+        //    if (newCompany == null)
+        //    {
+        //        return BadRequest("Invalid data");
+        //    }
+        //    newCompany.Id = companies.Max(p => p.Id) + 1;
+        //    companies.Add(newCompany);
+        //    return CreatedAtAction(nameof(Get), new { id = newCompany.Id }, newCompany);
+        //}
 
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Company updatedCompany)
-        {
-            if (updatedCompany == null)
-            {
-                return BadRequest("Invalid data");
-            }
-            var existingCompany = companies.SingleOrDefault(p => p.Id == id);
-            if (existingCompany == null)
-            {
-                return NotFound();
-            }
-            // Обновляем данные компании
-            existingCompany.Name = updatedCompany.Name;
-            // Добавьте здесь обновление других свойств компании при необходимости
-            return Ok(existingCompany);
-        }
+        //[HttpPut("{id}")]
+        //public IActionResult Put(int id, [FromBody] Company updatedCompany)
+        //{
+        //    if (updatedCompany == null)
+        //    {
+        //        return BadRequest("Invalid data");
+        //    }
+        //    var existingCompany = companies.SingleOrDefault(p => p.Id == id);
+        //    if (existingCompany == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    // Обновляем данные компании
+        //    existingCompany.Name = updatedCompany.Name;
+        //    // Добавьте здесь обновление других свойств компании при необходимости
+        //    return Ok(existingCompany);
+        //}
     }
 }

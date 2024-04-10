@@ -26,28 +26,15 @@ namespace PROMHUB.Controllers
                                join companyInfo in _context.CompanyInfo on company.Id equals companyInfo.CompanyId
                                select new CombinedDataCompanyDistributorProductTables
                                {
-                                   Product = new ProductData
+                                   Product = new ProductWithDistributorCompanuID
                                    {
-                                       Id = product.Id,
+                                       IdProduct = product.Id,
                                        Name = product.Name,
                                        Price = product.Price,
                                        Photo = _imageService.GetImageUrl(product.Photo),
-                                       Discount = product.Discount
-                                   },
-                                   Distributor = new DistributorData
-                                   {
-                                       Id = distributor.Id,
-                                       Address = distributor.AddressString,
-                                       Rating = distributor.Rating
-                                   },
-                                   Company = new CompanyData
-                                   {
-                                       Id = company.Id,
-                                       Name = company.Name,
-                                       Description = companyInfo.Description,
-                                       ContactPhone = companyInfo.ContactPhone,
-                                       ContactEmail = companyInfo.ContactEmail,
-                                       Photo = _imageService.GetImageUrl(companyInfo.Photo)
+                                       Discount = product.Discount,
+                                       IdDistributor = distributor.Id,
+                                       IdCompany = company.Id
                                    }
                                }).ToList();
 
