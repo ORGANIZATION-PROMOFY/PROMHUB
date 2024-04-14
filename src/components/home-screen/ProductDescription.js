@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const Product = ({ onModalVisible, product }) => {
+const ProductDescription = ({ onModalVisible, product }) => {
   const [count, setCount] = useState(0);
 
   return (
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   modalContent: {
+    paddingTop: 20,
     height: "60%",
     backgroundColor: "white",
     borderRadius: 8,
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 55,
     flexDirection: "row",
-    marginTop: 60,
+    marginTop: 40,
     justifyContent: "space-between",
   },
   countBtnBlock: {
@@ -171,4 +172,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Product;
+export default ProductDescription;

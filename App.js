@@ -1,5 +1,5 @@
-import MainNavigator from "./components/main/MainNavigator";
-import SignIn from "./components/enter/SignIn";
+import MainNavigator from "./src/screens/MainNavigator";
+import SignIn from "./src/components/enter/SignIn";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";

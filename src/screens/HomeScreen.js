@@ -8,24 +8,23 @@ import {
   Animated,
   Pressable,
 } from "react-native";
-import SearchBar from "../home-screen/SearchBar";
-import SearchResult from "../home-screen/SearchResult";
-import ProductDescription from "../home-screen/ProductDescription";
+import SearchBar from "../components/home-screen/SearchBar";
+import SearchResult from "../components/home-screen/SearchResult";
+import ProductDescription from "../components/home-screen/ProductDescription";
 
 const HomeScreen = () => {
   const [query, setQuery] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [productData, setProductData] = useState([]);
 
-  const paddingTopAnim = useRef(new Animated.Value(230)).current; // Используем useRef для сохранения значения между рендерами
+  const paddingTopAnim = useRef(new Animated.Value(230)).current;
   useEffect(() => {
     Animated.timing(paddingTopAnim, {
       toValue: query ? 0 : 230,
       duration: 500,
-      useNativeDriver: false, // 'paddingTop' не может быть анимирован с использованием нативного драйвера
+      useNativeDriver: false,
     }).start();
-  }, [query, paddingTopAnim]); // Запуск анимации при изменении query
-
+  }, [query, paddingTopAnim]);
   const onSearch = (searchQuery) => {
     setQuery(searchQuery);
   };

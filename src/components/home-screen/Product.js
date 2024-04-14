@@ -14,9 +14,9 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import discountImg from "../data/discountImg.png";
+import discountImg from "../../img/discountImg.png";
 
-const Product = ({ product, onTogle, marginRight }) => {
+const Product = ({ product, onTogle, marginRight, lastChild }) => {
   const screenWidth = Dimensions.get("window").width;
   let productWidth = (screenWidth - 50) / 2;
 
@@ -77,6 +77,7 @@ const Product = ({ product, onTogle, marginRight }) => {
         {
           width: productWidth,
           marginRight: marginRight ? 30 : 0,
+          marginRight: lastChild ? productWidth + 30 : marginRight ? 30 : 0,
         },
       ]}
     >

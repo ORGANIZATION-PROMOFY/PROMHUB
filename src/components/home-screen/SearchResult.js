@@ -1,6 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { View, ScrollView, StyleSheet, Animated } from "react-native";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Animated,
+  ActivityIndicator,
+} from "react-native";
 import ProductBlock from "./ProductBlock";
+import { getProduct } from "../../api/API";
 
 const SearchResult = ({ query, onTogle }) => {
   const url = "192.168.1.18";
@@ -12,36 +19,28 @@ const SearchResult = ({ query, onTogle }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://${url}:5275/api/CombinedDataCompanyDistributorProductTables`
-        );
-        if (!response.ok) {
-          throw new Error("Empty response received");
-        }
-        const data = await response.json();
-        if (!data) {
-          throw new Error("Invalid JSON received");
-        }
-        setAllData(data);
+        const data = await getProduct();
+        setAllData(data[0]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, []);
+  }, [query]);
 
   useEffect(() => {
     if (allData && query) {
-      const filteredResult = [];
-      allData.forEach((chunk) => {
-        const filteredChunk = chunk.filter((product) =>
-          product.product.name.toLowerCase().includes(query.toLowerCase())
-        );
-        if (filteredChunk.length > 0) {
-          filteredResult.push(filteredChunk);
+      const productsByCompany = {};
+      allData.forEach((product) => {
+        if (product.product.name.toLowerCase().includes(query.toLowerCase())) {
+          const { idCompany } = product.product;
+          if (!productsByCompany[idCompany]) {
+            productsByCompany[idCompany] = [];
+          }
+          productsByCompany[idCompany].push(product);
         }
       });
-      setFilteredData(filteredResult);
+      setFilteredData(Object.values(productsByCompany));
     }
   }, [query, allData]);
 
@@ -52,6 +51,10 @@ const SearchResult = ({ query, onTogle }) => {
       useNativeDriver: true,
     }).start();
   }, [query, fadeAnim]);
+
+  if (!filteredData) {
+    return <ActivityIndicator size="large" color="#0000ff" />; // Или <Text>Loading...</Text> если не хотите использовать индикатор
+  }
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
@@ -70,6 +73,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     paddingHorizontal: 10,
+    marginBottom: 100,
   },
 });
 
