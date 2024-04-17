@@ -16,13 +16,17 @@ import Animated, {
 } from "react-native-reanimated";
 import discountImg from "../../img/discountImg.png";
 
-const Product = ({ product, onTogle, marginRight, lastChild }) => {
+const Product = ({ product, onTogle, marginRight, lastChild, navigation }) => {
   const screenWidth = Dimensions.get("window").width;
   let productWidth = (screenWidth - 50) / 2;
 
   const [count, setCount] = useState(0);
   const animationWidth = useSharedValue(0);
   const rotation = useSharedValue(0);
+
+  const handlePress = () => {
+    navigation.navigate("OrderScreen", { product });
+  };
 
   const handlePlus = () => {
     setCount((prev) => prev + 1);
@@ -114,7 +118,7 @@ const Product = ({ product, onTogle, marginRight, lastChild }) => {
           </View>
         </Animated.View>
         <Animated.View style={rotateStyle}>
-          <TouchableOpacity onPress={handlePlus} style={styles.oppButton}>
+          <TouchableOpacity onPress={handlePress} style={styles.oppButton}>
             <Text style={styles.oppText}>+</Text>
           </TouchableOpacity>
         </Animated.View>

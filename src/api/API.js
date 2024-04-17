@@ -17,3 +17,8 @@ export const getCompany = async (id) => {
   const response = await apiClient.get(`Company/${id}`);
   return response.data;
 };
+
+export const getDistributor = async (id) => {
+  const response = await apiClient.get(`Distributor/${id}`);
+  return response.data;
+};

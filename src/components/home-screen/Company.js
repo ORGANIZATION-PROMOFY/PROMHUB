@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet, ActivityIndicator } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { getCompany } from "../../api/API";
+import Distributor from "./Distributor";
 
-const Company = ({ idCompany }) => {
+const Company = ({ idCompany, idDistributor }) => {
   const [companyData, setCompanyData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -17,19 +17,12 @@ const Company = ({ idCompany }) => {
     fetchData();
   }, [idCompany]);
 
-  if (!companyData) {
-    return <ActivityIndicator size="large" color="#0000ff" />; // Или <Text>Loading...</Text> если не хотите использовать индикатор
-  }
-
   return companyData ? (
     <View style={styles.container}>
-      {/* <Image source={{ uri: companyData.photo }} style={styles.img} /> */}
-      <View style={styles.text}>
-        <Text style={styles.name}>{companyData.name}</Text>
-        <View style={styles.address}>
-          <Ionicons name="location-sharp" size={15} color={"#F5D21F"} />
-          <Text style={styles.addressText}>Aleksandra Biezina iela 1-10</Text>
-        </View>
+      <Image source={{ uri: companyData.photo }} style={styles.img} />
+      <View style={styles.textBlock}>
+        <Text style={styles.companyName}>{companyData.name}</Text>
+        <Distributor idDistributor={idDistributor} />
       </View>
     </View>
   ) : null;
@@ -37,9 +30,15 @@ const Company = ({ idCompany }) => {
 
 const styles = StyleSheet.create({
   container: {
+    height: 50,
     marginBottom: 10,
     flexDirection: "row",
     alignItems: "center",
+  },
+  textBlock: {
+    height: "100%",
+    flexDirection: "column",
+    justifyContent: "space-around",
   },
   img: {
     height: 50,
@@ -48,20 +47,24 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginRight: 10,
   },
-  name: {
+  companyName: {
     fontFamily: "Roboto-Medium",
+    fontSize: 16,
   },
-  text: {
-    flexDirection: "column",
-  },
-  adress: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  adressText: {
-    fontFamily: "Roboto-Light",
-    color: "#808089",
-  },
+  // name: {
+  //   fontFamily: "Roboto-Medium",
+  // },
+  // text: {
+  //   flexDirection: "column",
+  // },
+  // adress: {
+  //   flexDirection: "row",
+  //   alignItems: "center",
+  // },
+  // adressText: {
+  //   fontFamily: "Roboto-Light",
+  //   color: "#808089",
+  // },
 });
 
 export default Company;

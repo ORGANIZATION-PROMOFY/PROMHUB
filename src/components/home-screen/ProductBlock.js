@@ -1,14 +1,21 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import Company from "./Company";
+import Distributor from "./Distributor";
 import Product from "./Product";
 
-const ProductBlock = ({ products, onTogle }) => {
+const ProductBlock = ({ products, onTogle, navigation }) => {
   return (
     <View style={styles.container}>
-      <Company idCompany={products[0].product.idCompany} />
+      <View style={styles.companyBlock}>
+        <Company
+          idCompany={products[0].product.idCompany}
+          idDistributor={products[0].product.idDistributor}
+        />
+        <Distributor />
+      </View>
 
       <ScrollView
-        style={styles.companyContainer}
+        style={styles.productBlock}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
@@ -20,6 +27,7 @@ const ProductBlock = ({ products, onTogle }) => {
             onTogle={() => onTogle(product.product)}
             marginRight={productIndex % 2 === 0}
             lastChild={productIndex == products.length - 1}
+            navigation={navigation}
           />
         ))}
       </ScrollView>
@@ -31,7 +39,8 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 30,
   },
-  companyContainer: {
+  companyBlock: {},
+  productBlock: {
     flexGrow: 0,
     flexDirection: "row",
   },

@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./HomeScreen";
+import OrderScreen from "./OrderScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -11,12 +12,6 @@ const Tab = createBottomTabNavigator();
 const AccountScreen = () => (
   <View style={styles.layout}>
     <Text style={styles.title}>AccountScreen</Text>
-  </View>
-);
-
-const OrderScreen = () => (
-  <View style={styles.layout}>
-    <Text style={styles.title}>OrderScreen</Text>
   </View>
 );
 
@@ -43,7 +38,7 @@ const MainNavigator = () => (
     style={{ backgroundColor: "white" }}
   >
     <Tab.Screen
-      name="Home"
+      name="HomeScreen"
       component={HomeScreen}
       options={{
         headerShown: false,
@@ -71,7 +66,7 @@ const MainNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Account"
+      name="OrderScreen"
       component={OrderScreen}
       options={{
         headerShown: false,

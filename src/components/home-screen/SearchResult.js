@@ -9,7 +9,7 @@ import {
 import ProductBlock from "./ProductBlock";
 import { getProduct } from "../../api/API";
 
-const SearchResult = ({ query, onTogle }) => {
+const SearchResult = ({ query, onTogle, navigation }) => {
   const url = "192.168.1.18";
 
   const [filteredData, setFilteredData] = useState([]);
@@ -61,7 +61,12 @@ const SearchResult = ({ query, onTogle }) => {
       {query && (
         <ScrollView showsVerticalScrollIndicator={false}>
           {filteredData.map((chunk, index) => (
-            <ProductBlock key={index} products={chunk} onTogle={onTogle} />
+            <ProductBlock
+              key={index}
+              products={chunk}
+              onTogle={onTogle}
+              navigation={navigation}
+            />
           ))}
         </ScrollView>
       )}

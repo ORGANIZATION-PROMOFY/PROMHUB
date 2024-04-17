@@ -12,7 +12,7 @@ import SearchBar from "../components/home-screen/SearchBar";
 import SearchResult from "../components/home-screen/SearchResult";
 import ProductDescription from "../components/home-screen/ProductDescription";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [query, setQuery] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [productData, setProductData] = useState([]);
@@ -42,7 +42,11 @@ const HomeScreen = () => {
           {query ? null : <Text style={styles.header}>PROMHUB</Text>}
           <SearchBar onSearch={onSearch} />
         </View>
-        <SearchResult query={query} onTogle={onProductSelect} />
+        <SearchResult
+          query={query}
+          onTogle={onProductSelect}
+          navigation={navigation}
+        />
         <Modal animationType="slide" visible={modalVisible} transparent={true}>
           <ProductDescription
             product={productData}
