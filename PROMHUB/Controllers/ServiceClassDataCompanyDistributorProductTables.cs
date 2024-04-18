@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using global::PROMHUB.Data;
-using Microsoft.EntityFrameworkCore;
 using PROMHUB.Data.Models;
 
 namespace PROMHUB.Controllers
