@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PROMHUB.Data.Models
 {
-    public class Distributor
+    public class Shop
     {
         public int Id { get; set; }
 
@@ -27,7 +27,7 @@ namespace PROMHUB.Data.Models
         public Company Company { get; set; }
 
         // Навигационное свойство к продукту дистрибьютора
-        public ProductDistributor ProductDistributor { get; set; }
+        public ProductShop ProductShop { get; set; }
 
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "niKRjSNCSzDYeBJ9p1y39slv3+kr/2nSUi2pgcfX4rk=",
+  "Hash": "jw7kGaS8va4B6taXr95SUIjjPvej9RI46iGzT6mgw2Y=",
   "Source": "PROMHUB",
   "BasePath": "_content/PROMHUB",
   "Mode": "Default",
@@ -34,6 +34,63 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Apples.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples2.jpg",
+      "SourceId": "PROMHUB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
+      "BasePath": "_content/PROMHUB",
+      "RelativePath": "img/Apples2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Apples2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples3.jpg",
+      "SourceId": "PROMHUB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
+      "BasePath": "_content/PROMHUB",
+      "RelativePath": "img/Apples3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Apples3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples4.jpg",
+      "SourceId": "PROMHUB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
+      "BasePath": "_content/PROMHUB",
+      "RelativePath": "img/Apples4.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Apples4.jpg"
     },
     {
       "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Bananas.jpg",
@@ -112,12 +169,12 @@
       "OriginalItemSpec": "wwwroot\\img\\Maxima.PNG"
     },
     {
-      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Mego.png",
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Mego.PNG",
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
-      "RelativePath": "img/Mego.png",
+      "RelativePath": "img/Mego.PNG",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -128,15 +185,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\Mego.png"
+      "OriginalItemSpec": "wwwroot\\img\\Mego.PNG"
     },
     {
-      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Rimi.png",
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Rimi.PNG",
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
-      "RelativePath": "img/Rimi.png",
+      "RelativePath": "img/Rimi.PNG",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +204,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\Rimi.png"
+      "OriginalItemSpec": "wwwroot\\img\\Rimi.PNG"
     }
   ]
 }

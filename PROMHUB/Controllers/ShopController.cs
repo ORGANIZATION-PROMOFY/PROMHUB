@@ -8,25 +8,25 @@ using Microsoft.EntityFrameworkCore;
 namespace PROMHUB.Controllers
 {
     [Route("api/[controller]")]
-    public class DistributorController : Controller
+    public class ShopController : Controller
     {
         private readonly AppDbContext _context;
 
-        public DistributorController(AppDbContext context)
+        public ShopController(AppDbContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Distributor>> GetAsync()
+        public async Task<IEnumerable<Shop>> GetAsync()
         {
-            return await _context.Distributor.ToListAsync();
+            return await _context.Shop.ToListAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var distributor = await _context.Distributor.FindAsync(id);
+            var distributor = await _context.Shop.FindAsync(id);
             if (distributor == null)
             {
                 return NotFound();

@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\img\\Apples.jpg"
     },
     {
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples2.jpg",
+      "PackagePath": "staticwebassets\\img\\Apples2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples3.jpg",
+      "PackagePath": "staticwebassets\\img\\Apples3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples4.jpg",
+      "PackagePath": "staticwebassets\\img\\Apples4.jpg"
+    },
+    {
       "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Bananas.jpg",
       "PackagePath": "staticwebassets\\img\\Bananas.jpg"
     },
@@ -21,12 +33,12 @@
       "PackagePath": "staticwebassets\\img\\Maxima.PNG"
     },
     {
-      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Mego.png",
-      "PackagePath": "staticwebassets\\img\\Mego.png"
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Mego.PNG",
+      "PackagePath": "staticwebassets\\img\\Mego.PNG"
     },
     {
-      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Rimi.png",
-      "PackagePath": "staticwebassets\\img\\Rimi.png"
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Rimi.PNG",
+      "PackagePath": "staticwebassets\\img\\Rimi.PNG"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PROMHUB.Microsoft.AspNetCore.StaticWebAssets.props",

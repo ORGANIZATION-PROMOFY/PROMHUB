@@ -19,7 +19,9 @@ namespace PROMHUB.Data.Models
 
         public int Discount { get; set; }
 
-        public ProductDistributor ProductDistributor { get; set; }
+        public ProductShop ProductShop { get; set; }
+
+        public ICollection<CompanyProduct> CompanyProducts { get; set; }
 
     }
 
@@ -39,7 +41,7 @@ namespace PROMHUB.Data.Models
 
         public int Discount { get; set; }
 
-        public ProductDistributor ProductDistributor { get; set; }
+        public ProductShop ProductShop { get; set; }
 
         [JsonIgnore]
         public byte[] PhotoBlob { get; set; } // Игнорируем при сериализации для GET
@@ -62,7 +64,7 @@ namespace PROMHUB.Data.Models
 
         public int Discount { get; set; }
 
-        public ProductDistributor ProductDistributor { get; set; }
+        public ProductShop ProductShop { get; set; }
 
         [JsonPropertyName("PhotoBlob")]
         public byte[] PhotoBlob { get; set; }

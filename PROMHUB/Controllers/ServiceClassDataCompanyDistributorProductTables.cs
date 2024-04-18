@@ -20,9 +20,9 @@ namespace PROMHUB.Controllers
         public IEnumerable<List<CombinedDataCompanyDistributorProductTables>> GetCombinedData()
         {
             var combinedData = (from product in _context.Product
-                               join productDistributor in _context.ProductDistributor on product.Id equals productDistributor.ProductId
-                               join distributor in _context.Distributor on productDistributor.DistributorId equals distributor.Id
-                               join company in _context.Company on distributor.CompanyId equals company.Id
+                               join productShop in _context.ProductShop on product.Id equals productShop.ProductId
+                               join shop in _context.Shop on productShop.ShopId equals shop.Id
+                               join company in _context.Company on shop.CompanyId equals company.Id
                                join companyInfo in _context.CompanyInfo on company.Id equals companyInfo.CompanyId
                                select new CombinedDataCompanyDistributorProductTables
                                {
@@ -33,7 +33,7 @@ namespace PROMHUB.Controllers
                                        Price = product.Price,
                                        Photo = _imageService.GetImageUrl(product.Photo),
                                        Discount = product.Discount,
-                                       IdDistributor = distributor.Id,
+                                       IdDistributor = shop.Id,
                                        IdCompany = company.Id
                                    }
                                }).ToList();
