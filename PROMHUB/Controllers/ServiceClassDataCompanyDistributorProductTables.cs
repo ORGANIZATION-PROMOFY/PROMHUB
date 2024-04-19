@@ -32,7 +32,7 @@ namespace PROMHUB.Controllers
                                        Price = product.Price,
                                        Photo = _imageService.GetImageUrl(product.Photo),
                                        Discount = product.Discount,
-                                       IdDistributor = shop.Id,
+                                       IdShop = shop.Id,
                                        IdCompany = company.Id
                                    }
                                }).ToList();

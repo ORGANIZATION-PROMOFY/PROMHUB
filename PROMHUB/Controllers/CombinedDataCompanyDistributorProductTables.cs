@@ -12,7 +12,7 @@
         public double Price { get; set; }
         public string Photo { get; set; }
         public int Discount { get; set; }
-        public int IdDistributor { get; set; }
+        public int IdShop { get; set; }
         public int IdCompany { get; set; }
     }
 }

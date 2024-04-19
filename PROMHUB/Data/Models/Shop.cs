@@ -26,8 +26,7 @@ namespace PROMHUB.Data.Models
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }
 
-        // Навигационное свойство к продукту дистрибьютора
-        public ProductShop ProductShop { get; set; }
+        public ICollection<ProductShop> ProductShops { get; set; }
 
     }
 }

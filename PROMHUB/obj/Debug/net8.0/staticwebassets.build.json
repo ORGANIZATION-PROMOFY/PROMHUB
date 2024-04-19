@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< HEAD
   "Hash": "jw7kGaS8va4B6taXr95SUIjjPvej9RI46iGzT6mgw2Y=",
-=======
-  "Hash": "wcQSnZO0G5tUrwxpKGEJl1PSQeZryBoBSiCP46bJm3g=",
->>>>>>> origin/Backend
   "Source": "PROMHUB",
   "BasePath": "_content/PROMHUB",
   "Mode": "Default",
@@ -14,17 +10,17 @@
     {
       "Name": "PROMHUB\\wwwroot",
       "Source": "PROMHUB",
-      "ContentRoot": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Apples.jpg",
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples.jpg",
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
       "RelativePath": "img/Apples.jpg",
       "AssetKind": "All",
@@ -40,7 +36,6 @@
       "OriginalItemSpec": "wwwroot\\img\\Apples.jpg"
     },
     {
-<<<<<<< HEAD
       "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples2.jpg",
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
@@ -99,12 +94,9 @@
     },
     {
       "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Bananas.jpg",
-=======
-      "Identity": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Bananas.jpg",
->>>>>>> origin/Backend
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
       "RelativePath": "img/Bananas.jpg",
       "AssetKind": "All",
@@ -120,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Bananas.jpg"
     },
     {
-      "Identity": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Grapes.jpg",
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Grapes.jpg",
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
       "RelativePath": "img/Grapes.jpg",
       "AssetKind": "All",
@@ -139,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Grapes.jpg"
     },
     {
-      "Identity": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Lidl.PNG",
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Lidl.PNG",
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
       "RelativePath": "img/Lidl.PNG",
       "AssetKind": "All",
@@ -158,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Lidl.PNG"
     },
     {
-      "Identity": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Maxima.PNG",
+      "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Maxima.PNG",
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
       "RelativePath": "img/Maxima.PNG",
       "AssetKind": "All",
@@ -177,14 +169,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Maxima.PNG"
     },
     {
-<<<<<<< HEAD
       "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Mego.PNG",
-=======
-      "Identity": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Mego.PNG",
->>>>>>> origin/Backend
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
       "RelativePath": "img/Mego.PNG",
       "AssetKind": "All",
@@ -200,14 +188,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Mego.PNG"
     },
     {
-<<<<<<< HEAD
       "Identity": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Rimi.PNG",
-=======
-      "Identity": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Rimi.PNG",
->>>>>>> origin/Backend
       "SourceId": "PROMHUB",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\",
       "BasePath": "_content/PROMHUB",
       "RelativePath": "img/Rimi.PNG",
       "AssetKind": "All",

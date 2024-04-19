@@ -7,6 +7,12 @@ using System.IO;
 using PROMHUB.Data;
 using PROMHUB.Controllers;
 
+Console.WriteLine("Command line arguments:");
+foreach (var arg in args)
+{
+    Console.WriteLine(arg);
+}
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

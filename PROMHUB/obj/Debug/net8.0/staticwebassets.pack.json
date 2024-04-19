@@ -1,11 +1,10 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Apples.jpg",
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples.jpg",
       "PackagePath": "staticwebassets\\img\\Apples.jpg"
     },
     {
-<<<<<<< HEAD
       "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Apples2.jpg",
       "PackagePath": "staticwebassets\\img\\Apples2.jpg"
     },
@@ -19,37 +18,26 @@
     },
     {
       "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Bananas.jpg",
-=======
-      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Bananas.jpg",
->>>>>>> origin/Backend
       "PackagePath": "staticwebassets\\img\\Bananas.jpg"
     },
     {
-      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Grapes.jpg",
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Grapes.jpg",
       "PackagePath": "staticwebassets\\img\\Grapes.jpg"
     },
     {
-      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Lidl.PNG",
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Lidl.PNG",
       "PackagePath": "staticwebassets\\img\\Lidl.PNG"
     },
     {
-      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Maxima.PNG",
+      "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Maxima.PNG",
       "PackagePath": "staticwebassets\\img\\Maxima.PNG"
     },
     {
-<<<<<<< HEAD
       "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Mego.PNG",
       "PackagePath": "staticwebassets\\img\\Mego.PNG"
     },
     {
       "Id": "C:\\Users\\papar\\source\\repos\\PROMHUB\\PROMHUB\\wwwroot\\img\\Rimi.PNG",
-=======
-      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Mego.PNG",
-      "PackagePath": "staticwebassets\\img\\Mego.PNG"
-    },
-    {
-      "Id": "C:\\Users\\rahma\\OneDrive\\Рабочий стол\\self\\PROMHUB\\backend\\promhub\\wwwroot\\img\\Rimi.PNG",
->>>>>>> origin/Backend
       "PackagePath": "staticwebassets\\img\\Rimi.PNG"
     },
     {

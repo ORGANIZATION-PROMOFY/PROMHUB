@@ -15,7 +15,8 @@ namespace PROMHUB.Data.Models
 
         public CompanyInfo CompanyInfo { get; set; }
 
-        // Навигационное свойство к дистрибьюторам
+        public ICollection<ProductShop> ProductShops { get; set; }
+
         public ICollection<CompanyProduct> CompanyProduct { get; set; }
 
     }

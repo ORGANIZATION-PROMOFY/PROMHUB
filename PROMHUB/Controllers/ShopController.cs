@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using PROMHUB.Data;
 using PROMHUB.Data.Models;
 using System.Collections.Generic;

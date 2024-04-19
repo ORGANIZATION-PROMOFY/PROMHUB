@@ -13,12 +13,10 @@ namespace PROMHUB.Data.Models
         [Required]
         public int ProductId { get; set; }
 
-        // Навигационное свойство к дистрибьютору
-        [ForeignKey("CompanyId")]
-        public Company Company { get; set; }
-
-        // Навигационное свойство к продукту
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
+
+        [ForeignKey("CompanyId")]
+        public Company Company { get; set; }
     }
 }

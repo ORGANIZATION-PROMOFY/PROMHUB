@@ -19,54 +19,56 @@ namespace PROMHUB.Data.Models
 
         public int Discount { get; set; }
 
-        public ProductShop ProductShop { get; set; }
-
+        public ICollection<ProductShop> ProductShops { get; set; }
         public ICollection<CompanyProduct> CompanyProducts { get; set; }
 
     }
 
     // Класс для операции GET
-    public class ProductGet
-    {
-        public int Id { get; set; }
+    //public class ProductGet
+    //{
+    //    public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Name { get; set; }
+    //    [Required]
+    //    [StringLength(50)]
+    //    public string Name { get; set; }
 
-        public string Photo { get; set; }
+    //    public string Photo { get; set; }
 
-        [Required]
-        public double Price { get; set; }
+    //    [Required]
+    //    public double Price { get; set; }
 
-        public int Discount { get; set; }
+    //    public int Discount { get; set; }
 
-        public ProductShop ProductShop { get; set; }
+    //    public ICollection<ProductShop> ProductShops { get; set; }
+    //    public ICollection<CompanyProduct> CompanyProducts { get; set; }
 
-        [JsonIgnore]
-        public byte[] PhotoBlob { get; set; } // Игнорируем при сериализации для GET
-    }
+    //    [JsonIgnore]
+    //    public byte[] PhotoBlob { get; set; } // Игнорируем при сериализации для GET
+    //}
 
-    // Класс для операции POST
-    public class ProductPostPut
-    {
-        public int Id { get; set; }
+    //// Класс для операции POST
+    //public class ProductPostPut
+    //{
+    //    public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Name { get; set; }
+    //    [Required]
+    //    [StringLength(50)]
+    //    public string Name { get; set; }
 
-        [JsonIgnore]
-        public string Photo { get; set; } // Игнорируем при десериализации для POST
+    //    [JsonIgnore]
+    //    public string Photo { get; set; } // Игнорируем при десериализации для POST
 
-        [Required]
-        public double Price { get; set; }
+    //    [Required]
+    //    public double Price { get; set; }
 
-        public int Discount { get; set; }
+    //    public int Discount { get; set; }
 
-        public ProductShop ProductShop { get; set; }
+    //    public ICollection<CompanyProduct> CompanyProducts { get; set; }
 
-        [JsonPropertyName("PhotoBlob")]
-        public byte[] PhotoBlob { get; set; }
-    }
+    //    public ICollection<ProductShop> ProductShops { get; set; }
+
+    //    [JsonPropertyName("PhotoBlob")]
+    //    public byte[] PhotoBlob { get; set; }
+    //}
 }

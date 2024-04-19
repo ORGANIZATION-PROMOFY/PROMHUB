@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PROMHUB.Data;
@@ -11,9 +12,11 @@ using PROMHUB.Data;
 namespace PROMHUB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240419141057_DeleteTwoColumInProduct")]
+    partial class DeleteTwoColumInProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,14 +92,24 @@ namespace PROMHUB.Migrations
                     b.Property<int>("CompanyId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("ProductGetId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ProductPostPutId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
 
+                    b.HasIndex("ProductGetId");
+
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductPostPutId");
 
                     b.ToTable("CompanyProduct");
                 });
@@ -129,6 +142,71 @@ namespace PROMHUB.Migrations
                     b.ToTable("Product");
                 });
 
+            modelBuilder.Entity("PROMHUB.Data.Models.ProductGet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<byte[]>("PhotoBlob")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductGets");
+                });
+
+            modelBuilder.Entity("PROMHUB.Data.Models.ProductPostPut", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<byte[]>("PhotoBlob")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasAnnotation("Relational:JsonPropertyName", "PhotoBlob");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductPostPuts");
+                });
+
             modelBuilder.Entity("PROMHUB.Data.Models.ProductShop", b =>
                 {
                     b.Property<int>("Id")
@@ -140,7 +218,13 @@ namespace PROMHUB.Migrations
                     b.Property<int?>("CompanyId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("ProductGetId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ProductPostPutId")
                         .HasColumnType("integer");
 
                     b.Property<int>("ShopId")
@@ -150,7 +234,11 @@ namespace PROMHUB.Migrations
 
                     b.HasIndex("CompanyId");
 
+                    b.HasIndex("ProductGetId");
+
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductPostPutId");
 
                     b.HasIndex("ShopId");
 
@@ -288,11 +376,19 @@ namespace PROMHUB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PROMHUB.Data.Models.ProductGet", null)
+                        .WithMany("CompanyProducts")
+                        .HasForeignKey("ProductGetId");
+
                     b.HasOne("PROMHUB.Data.Models.Product", "Product")
                         .WithMany("CompanyProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PROMHUB.Data.Models.ProductPostPut", null)
+                        .WithMany("CompanyProducts")
+                        .HasForeignKey("ProductPostPutId");
 
                     b.Navigation("Company");
 
@@ -305,11 +401,19 @@ namespace PROMHUB.Migrations
                         .WithMany("ProductShops")
                         .HasForeignKey("CompanyId");
 
+                    b.HasOne("PROMHUB.Data.Models.ProductGet", null)
+                        .WithMany("ProductShops")
+                        .HasForeignKey("ProductGetId");
+
                     b.HasOne("PROMHUB.Data.Models.Product", "Product")
                         .WithMany("ProductShops")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PROMHUB.Data.Models.ProductPostPut", null)
+                        .WithMany("ProductShops")
+                        .HasForeignKey("ProductPostPutId");
 
                     b.HasOne("PROMHUB.Data.Models.Shop", "Shop")
                         .WithMany("ProductShops")
@@ -353,6 +457,20 @@ namespace PROMHUB.Migrations
                 });
 
             modelBuilder.Entity("PROMHUB.Data.Models.Product", b =>
+                {
+                    b.Navigation("CompanyProducts");
+
+                    b.Navigation("ProductShops");
+                });
+
+            modelBuilder.Entity("PROMHUB.Data.Models.ProductGet", b =>
+                {
+                    b.Navigation("CompanyProducts");
+
+                    b.Navigation("ProductShops");
+                });
+
+            modelBuilder.Entity("PROMHUB.Data.Models.ProductPostPut", b =>
                 {
                     b.Navigation("CompanyProducts");
 
