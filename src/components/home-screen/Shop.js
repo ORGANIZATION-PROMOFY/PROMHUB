@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet, ActivityIndicator } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { getDistributor } from "../../api/API";
+import { getShop } from "../../api/API";
 
-const Distributor = ({ idDistributor }) => {
-  const [distributorData, setDistributorData] = useState(null);
+const Shop = ({ idShop }) => {
+  const [shopData, setShopData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getDistributor(idDistributor);
-        setDistributorData(data);
+        const data = await getShop(idShop);
+        setShopData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, [idDistributor]);
+  }, [idShop]);
 
-  return distributorData ? (
+  return shopData ? (
     <View style={styles.container}>
       <Ionicons name="location-sharp" size={14} color={"#808089"} />
-      <Text style={styles.adressText}>{distributorData.addressString}</Text>
+      <Text style={styles.adressText}>{shopData.addressString}</Text>
     </View>
   ) : null;
 };
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Distributor;
+export default Shop;

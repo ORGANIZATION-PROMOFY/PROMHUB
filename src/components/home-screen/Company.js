@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet, ActivityIndicator } from "react-native";
 import { getCompany } from "../../api/API";
-import Distributor from "./Distributor";
+import Shop from "./Shop";
 
-const Company = ({ idCompany, idDistributor }) => {
+const Company = ({ idCompany, idShop }) => {
   const [companyData, setCompanyData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -19,10 +19,13 @@ const Company = ({ idCompany, idDistributor }) => {
 
   return companyData ? (
     <View style={styles.container}>
-      <Image source={{ uri: companyData.photo }} style={styles.img} />
+      <Image
+        source={{ uri: `http://192.168.1.18:5275/img/${companyData.photo}` }}
+        style={styles.img}
+      />
       <View style={styles.textBlock}>
         <Text style={styles.companyName}>{companyData.name}</Text>
-        <Distributor idDistributor={idDistributor} />
+        <Shop idShop={idShop} />
       </View>
     </View>
   ) : null;

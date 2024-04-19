@@ -18,7 +18,7 @@ export const getCompany = async (id) => {
   return response.data;
 };
 
-export const getDistributor = async (id) => {
-  const response = await apiClient.get(`Distributor/${id}`);
+export const getShop = async (id) => {
+  const response = await apiClient.get(`Shop/${id}`);
   return response.data;
 };

@@ -1,6 +1,6 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import Company from "./Company";
-import Distributor from "./Distributor";
+import Shop from "./Shop";
 import Product from "./Product";
 
 const ProductBlock = ({ products, onTogle, navigation }) => {
@@ -9,9 +9,9 @@ const ProductBlock = ({ products, onTogle, navigation }) => {
       <View style={styles.companyBlock}>
         <Company
           idCompany={products[0].product.idCompany}
-          idDistributor={products[0].product.idDistributor}
+          idShop={products[0].product.idShop}
         />
-        <Distributor />
+        <Shop />
       </View>
 
       <ScrollView
