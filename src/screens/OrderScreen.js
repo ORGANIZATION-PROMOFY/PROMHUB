@@ -1,11 +1,16 @@
 import { View, SafeAreaView, Text } from "react-native";
+import { useProductStore } from "../store/productStore";
 
-const OrderScreen = ({ route }) => {
-  const { product } = route.params;
+const OrderScreen = () => {
+  const products = useProductStore((state) => state.products);
 
   return (
     <SafeAreaView>
-      <Text>{product.name}</Text>
+      {products.map((product) => (
+        <View key={product.id}>
+          <Text>{product.name}</Text>
+        </View>
+      ))}
     </SafeAreaView>
   );
 };

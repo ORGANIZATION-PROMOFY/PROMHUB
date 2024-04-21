@@ -20,11 +20,11 @@ const HomeScreen = ({ navigation }) => {
   const paddingTopAnim = useRef(new Animated.Value(230)).current;
   useEffect(() => {
     Animated.timing(paddingTopAnim, {
-      toValue: query ? 0 : 230,
+      toValue: query ? -145 : 230,
       duration: 500,
       useNativeDriver: false,
     }).start();
-  }, [query, paddingTopAnim]);
+  }, [query]);
   const onSearch = (searchQuery) => {
     setQuery(searchQuery);
   };
@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
       <Animated.View style={{ marginTop: paddingTopAnim }}>
         {modalVisible && <View style={styles.overlay} />}
         <View style={styles.center}>
-          {query ? null : <Text style={styles.header}>PROMHUB</Text>}
+          <Text style={styles.header}>PROMHUB</Text>
           <SearchBar onSearch={onSearch} />
         </View>
         <SearchResult
@@ -47,13 +47,13 @@ const HomeScreen = ({ navigation }) => {
           onTogle={onProductSelect}
           navigation={navigation}
         />
-        <Modal animationType="slide" visible={modalVisible} transparent={true}>
-          <ProductDescription
-            product={productData}
-            onModalVisible={() => setModalVisible(!modalVisible)}
-          />
-        </Modal>
       </Animated.View>
+      <Modal animationType="slide" visible={modalVisible} transparent={true}>
+        <ProductDescription
+          product={productData}
+          onModalVisible={() => setModalVisible(!modalVisible)}
+        />
+      </Modal>
     </SafeAreaView>
   );
 };

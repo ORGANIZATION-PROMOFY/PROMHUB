@@ -53,7 +53,7 @@ const SearchResult = ({ query, onTogle, navigation }) => {
   }, [query, fadeAnim]);
 
   if (!filteredData) {
-    return <ActivityIndicator size="large" color="#0000ff" />; // Или <Text>Loading...</Text> если не хотите использовать индикатор
+    return <ActivityIndicator size="large" color="#0000ff" />;
   }
 
   return (
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     paddingHorizontal: 10,
-    marginBottom: 100,
+    marginBottom: 390,
   },
 });
 

@@ -26,7 +26,10 @@ const ProductBlock = ({ products, onTogle, navigation }) => {
             product={product.product}
             onTogle={() => onTogle(product.product)}
             marginRight={productIndex % 2 === 0}
-            lastChild={productIndex == products.length - 1}
+            lastChild={
+              productIndex == products.length - 1 &&
+              (products.length - 1) % 2 == 0
+            }
             navigation={navigation}
           />
         ))}

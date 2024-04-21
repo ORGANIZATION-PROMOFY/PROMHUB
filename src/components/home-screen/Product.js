@@ -14,6 +14,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+import { useProductStore } from "../../store/productStore";
 import discountImg from "../../img/discountImg.png";
 
 const Product = ({ product, onTogle, marginRight, lastChild, navigation }) => {
@@ -24,12 +25,15 @@ const Product = ({ product, onTogle, marginRight, lastChild, navigation }) => {
   const animationWidth = useSharedValue(0);
   const rotation = useSharedValue(0);
 
-  const handlePress = () => {
-    navigation.navigate("OrderScreen", { product });
-  };
-
   const handlePlus = () => {
-    setCount((prev) => prev + 1);
+    setCount((prev) => {
+      const newCount = prev + 1;
+
+      if (newCount === 1) {
+        useProductStore.getState().addProduct(product);
+      }
+      return newCount;
+    });
     if (count === 0) {
       rotation.value = withTiming(rotation.value + 180, {
         duration: 400,
@@ -80,7 +84,6 @@ const Product = ({ product, onTogle, marginRight, lastChild, navigation }) => {
 
         {
           width: productWidth,
-          marginRight: marginRight ? 30 : 0,
           marginRight: lastChild ? productWidth + 30 : marginRight ? 30 : 0,
         },
       ]}
@@ -118,7 +121,7 @@ const Product = ({ product, onTogle, marginRight, lastChild, navigation }) => {
           </View>
         </Animated.View>
         <Animated.View style={rotateStyle}>
-          <TouchableOpacity onPress={handlePress} style={styles.oppButton}>
+          <TouchableOpacity onPress={handlePlus} style={styles.oppButton}>
             <Text style={styles.oppText}>+</Text>
           </TouchableOpacity>
         </Animated.View>
