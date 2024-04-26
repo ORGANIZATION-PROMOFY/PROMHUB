@@ -8,9 +8,26 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useProductStore } from "../../store/productStore";
 
 const ProductDescription = ({ onModalVisible, product }) => {
-  const [count, setCount] = useState(0);
+  let count = useProductStore(
+    (state) => state.products[product.idProduct]?.count || 0
+  );
+  const { increaseCount, decreaseCount } = useProductStore((state) => ({
+    increaseCount: state.increaseCount,
+    decreaseCount: state.decreaseCount,
+  }));
+
+  const handlePlus = () => {
+    increaseCount(product, product.idProduct);
+  };
+
+  const handleMinus = () => {
+    if (count > 0) {
+      decreaseCount(product.idProduct);
+    }
+  };
 
   return (
     <View style={styles.modalContainer}>
@@ -41,16 +58,13 @@ const ProductDescription = ({ onModalVisible, product }) => {
             <View style={styles.countBtnBlock}>
               <Pressable
                 style={styles.countOpBtn}
-                onPress={() => setCount((prevCount) => prevCount - 1)}
+                onPress={handleMinus}
                 disabled={count <= 0}
               >
                 <Text style={styles.countOpText}>−</Text>
               </Pressable>
               <Text style={styles.countText}>{count}</Text>
-              <Pressable
-                style={styles.countOpBtn}
-                onPress={() => setCount((prevCount) => prevCount + 1)}
-              >
+              <Pressable style={styles.countOpBtn} onPress={handlePlus}>
                 <Text style={styles.countOpText}>+</Text>
               </Pressable>
             </View>
