@@ -30,12 +30,4 @@ const OrderList = ({ productsData }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 10,
-    paddingHorizontal: 10,
-    marginBottom: 390,
-  },
-});
-
 export default OrderList;

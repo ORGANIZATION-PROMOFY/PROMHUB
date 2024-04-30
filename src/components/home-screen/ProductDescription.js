@@ -8,7 +8,7 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useProductStore } from "../../store/productStore";
+import { useProductStore } from "../store/productStore";
 
 const ProductDescription = ({ onModalVisible, product }) => {
   let count = useProductStore(

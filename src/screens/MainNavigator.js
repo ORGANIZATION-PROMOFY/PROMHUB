@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./HomeScreen";
 import OrderScreen from "./OrderScreen";
+import IconOrderScreen from "../components/other/iconOrderScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -70,13 +71,7 @@ const MainNavigator = () => (
       component={OrderScreen}
       options={{
         headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          <Ionicons
-            name={focused ? "bookmark" : "bookmark-outline"}
-            size={25}
-            color={"#F5D21F"}
-          />
-        ),
+        tabBarIcon: ({ focused }) => <IconOrderScreen isFocused={focused} />,
       }}
     />
   </Tab.Navigator>

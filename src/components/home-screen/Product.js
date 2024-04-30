@@ -14,7 +14,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { useProductStore } from "../../store/productStore";
+import { useProductStore } from "../store/productStore";
 import discountImg from "../../img/discountImg.png";
 
 const Product = ({ product, onTogle, marginRight, lastChild }) => {

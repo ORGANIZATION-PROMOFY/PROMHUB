@@ -1,5 +1,5 @@
 import { View, SafeAreaView, Text, StyleSheet } from "react-native";
-import { useProductStore } from "../store/productStore";
+import { useProductStore } from "../components/store/productStore";
 import OrderList from "../components/order-screen/OrderList";
 
 const OrderScreen = () => {
