@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 30,
     backgroundColor: "white",
+    paddingHorizontal: 20,
   },
   companyBlock: {},
   productBlock: {
