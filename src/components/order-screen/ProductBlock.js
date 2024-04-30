@@ -1,36 +1,19 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import Company from "./Company";
-import Shop from "./Shop";
 import Product from "./Product";
 
-const ProductBlock = ({ products, onTogle, navigation }) => {
+const ProductBlock = ({ products }) => {
   return (
     <View style={styles.container}>
       <View style={styles.companyBlock}>
         <Company
-          idCompany={products[0].product.idCompany}
-          idShop={products[0].product.idShop}
+          idCompany={products[0].idCompany}
+          idShop={products[0].idShop}
         />
       </View>
-
-      <ScrollView
-        style={styles.productBlock}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-      >
-        {products.map((product, productIndex) => (
-          <Product
-            key={productIndex}
-            product={product.product}
-            onTogle={() => onTogle(product.product)}
-            marginRight={productIndex % 2 === 0}
-            lastChild={
-              productIndex == products.length - 1 &&
-              (products.length - 1) % 2 == 0
-            }
-            navigation={navigation}
-          />
+      <ScrollView style={styles.productBlock}>
+        {products.map((product) => (
+          <Product key={product.idProduct} product={product} />
         ))}
       </ScrollView>
     </View>
@@ -40,6 +23,7 @@ const ProductBlock = ({ products, onTogle, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 30,
+    backgroundColor: "white",
   },
   companyBlock: {},
   productBlock: {

@@ -1,56 +1,32 @@
-import { useState, useEffect, useRef } from "react";
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Animated,
-  ActivityIndicator,
-} from "react-native";
+import { useState, useEffect, useMemo } from "react";
+import { View, ScrollView, StyleSheet, ActivityIndicator } from "react-native";
 import ProductBlock from "./ProductBlock";
-import { getProduct } from "../../api/API";
 
-const SearchResult = ({ query, onTogle, navigation }) => {
-  const url = "192.168.1.18";
-
+const OrderList = ({ productsData }) => {
+  const productsArray = useMemo(
+    () => Object.values(productsData),
+    [productsData]
+  );
   const [filteredData, setFilteredData] = useState([]);
-  const [allData, setAllData] = useState(null);
-  const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    if (allData && query) {
-      const productsByCompany = {};
-      allData.forEach((product) => {
-        if (product.product.name.toLowerCase().includes(query.toLowerCase())) {
-          const { idCompany } = product.product;
-          if (!productsByCompany[idCompany]) {
-            productsByCompany[idCompany] = [];
-          }
-          productsByCompany[idCompany].push(product);
-        }
-      });
-      setFilteredData(Object.values(productsByCompany));
-    }
-  }, [query, allData]);
-
-  if (!filteredData) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
-  }
+    const productsByCompany = {};
+    productsArray.forEach((product) => {
+      const { idCompany } = product;
+      if (!productsByCompany[idCompany]) {
+        productsByCompany[idCompany] = [];
+      }
+      productsByCompany[idCompany].push({ ...product });
+    });
+    setFilteredData(Object.values(productsByCompany));
+  }, [productsArray]);
 
   return (
-    <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
-      {query && (
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {filteredData.map((chunk, index) => (
-            <ProductBlock
-              key={index}
-              products={chunk}
-              onTogle={onTogle}
-              navigation={navigation}
-            />
-          ))}
-        </ScrollView>
-      )}
-    </Animated.View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      {filteredData.map((chunk, index) => (
+        <ProductBlock key={index} products={chunk} />
+      ))}
+    </ScrollView>
   );
 };
 
@@ -62,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchResult;
+export default OrderList;
