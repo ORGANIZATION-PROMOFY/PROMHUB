@@ -21,6 +21,9 @@
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true
         }
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyBqPQ9CS8VPW4HB05xiYiwgZCCcPduFkkE"
       }
     },
     "android": {
@@ -30,7 +33,10 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "config": {
+        "googleMapsApiKey": "AIzaSyBqPQ9CS8VPW4HB05xiYiwgZCCcPduFkkE"
+      }
     }
   }
 }

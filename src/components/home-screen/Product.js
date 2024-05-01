@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -21,9 +21,6 @@ const Product = ({ product, onTogle, marginRight, lastChild }) => {
   const screenWidth = Dimensions.get("window").width;
   let productWidth = (screenWidth - 50) / 2;
 
-  const animationWidth = useSharedValue(0);
-  const rotation = useSharedValue(0);
-
   const count = useProductStore(
     (state) => state.products[product.idProduct]?.count || 0
   );
@@ -32,26 +29,20 @@ const Product = ({ product, onTogle, marginRight, lastChild }) => {
     decreaseCount: state.decreaseCount,
   }));
 
+  const animationWidth = useSharedValue(count > 0 ? 100 : 0);
+  const rotation = useSharedValue(count > 0 ? 180 : 0);
+
+  useEffect(() => {
+    rotation.value = withTiming(count > 0 ? 180 : 0, { duration: 400 });
+    animationWidth.value = withTiming(count > 0 ? 100 : 0);
+  }, [count]);
+
   const handlePlus = () => {
     increaseCount(product, product.idProduct);
-    if (count === 0) {
-      rotation.value = withTiming(rotation.value + 180, {
-        duration: 400,
-      });
-    }
-    if (animationWidth.value === 0) {
-      animationWidth.value = withTiming(100);
-    }
   };
 
   const handleMinus = () => {
-    if (count > 0) {
-      decreaseCount(product.idProduct);
-      if (count === 1) {
-        rotation.value = withTiming(rotation.value - 180, { duration: 400 });
-        animationWidth.value = withTiming(0);
-      }
-    }
+    decreaseCount(product.idProduct);
   };
 
   const rotateStyle = useAnimatedStyle(() => {

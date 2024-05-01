@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
-import { View, ScrollView, StyleSheet, ActivityIndicator } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import ProductBlock from "./ProductBlock";
 
-const OrderList = ({ productsData }) => {
+const OrderList = ({ productsData, onMapPress }) => {
   const productsArray = useMemo(
     () => Object.values(productsData),
     [productsData]
@@ -24,7 +24,7 @@ const OrderList = ({ productsData }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {filteredData.map((chunk, index) => (
-        <ProductBlock key={index} products={chunk} />
+        <ProductBlock key={index} products={chunk} onMapPress={onMapPress} />
       ))}
     </ScrollView>
   );
