@@ -11,20 +11,20 @@ namespace PROMHUB.Controllers
     [Route("api/[controller]")]
     public class CompanyController : Controller
     {
-    private readonly AppDbContext _context;
+        private readonly AppDbContext _context;
 
         public CompanyController(AppDbContext context)
         {
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet] //company фото добавить путь
         public async Task<IEnumerable<Company>> GetAsync()
         {
             return await _context.Company.ToListAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] //company фото добавить путь
         public async Task<IActionResult> GetAsync(int id)
         {
             var company = await _context.Company.FindAsync(id);

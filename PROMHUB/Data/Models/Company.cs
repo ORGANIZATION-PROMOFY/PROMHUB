@@ -15,8 +15,6 @@ namespace PROMHUB.Data.Models
 
         public CompanyInfo CompanyInfo { get; set; }
 
-        public ICollection<ProductShop> ProductShops { get; set; }
-
         public ICollection<CompanyProduct> CompanyProduct { get; set; }
 
     }

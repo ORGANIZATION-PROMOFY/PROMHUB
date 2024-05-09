@@ -15,9 +15,9 @@ namespace PROMHUB.Data.Models
         [StringLength(50)]
         public string Surname { get; set; }
 
-
-        // Добавляем свойство UserSettings
         public UserSettings UserSettings { get; set; }
+
+        public ProductList ProductList { get; set; }
 
     }
 }
