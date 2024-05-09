@@ -12,19 +12,27 @@ namespace PROMHUB.Controllers
     public class CompanyController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly ImageService _imageService;
 
-        public CompanyController(AppDbContext context)
+        public CompanyController(AppDbContext context, ImageService imageService)
         {
             _context = context;
+            _imageService = imageService;
         }
 
-        [HttpGet] //company фото добавить путь
+        [HttpGet]
         public async Task<IEnumerable<Company>> GetAsync()
         {
-            return await _context.Company.ToListAsync();
+            var companies = await _context.Company.ToListAsync();
+            // Обновляем URL изображений для каждой компании
+            foreach (var company in companies)
+            {
+                company.Photo = _imageService.GetImageUrl(company.Photo);
+            }
+            return companies;
         }
 
-        [HttpGet("{id}")] //company фото добавить путь
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
             var company = await _context.Company.FindAsync(id);
@@ -32,6 +40,8 @@ namespace PROMHUB.Controllers
             {
                 return NotFound();
             }
+            // Обновляем URL изображения
+            company.Photo = _imageService.GetImageUrl(company.Photo);
             return Ok(company);
         }
 
