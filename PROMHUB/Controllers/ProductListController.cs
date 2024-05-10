@@ -34,5 +34,34 @@ namespace PROMHUB.Controllers
             }
             return Ok(distributor);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] ProductList productList)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.ProductList.Add(productList);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetAsync", new { id = productList.Id }, productList);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var productList = await _context.ProductList.FindAsync(id);
+            if (productList == null)
+            {
+                return NotFound();
+            }
+
+            _context.ProductList.Remove(productList);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

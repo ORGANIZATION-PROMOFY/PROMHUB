@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PROMHUB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c29084885e4357c519f3a8020a279a07165cad4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e917f97b708344656f419001769cca33140fffd")]
 [assembly: System.Reflection.AssemblyProductAttribute("PROMHUB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PROMHUB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
