@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PROMHUB.Data;
 using PROMHUB.Data.Models;
 
 namespace PROMHUB.Controllers
@@ -7,82 +9,31 @@ namespace PROMHUB.Controllers
     
     public class UsersController : Controller
     {
-        private static List<User> users = new List<User>(new[] {
-        new User() { Id = 1, Name = "Alex", Surname = "Alexvvdd" },
-        new User() { Id = 2, Name = "Ostin", Surname = "Ostindvss" },
-        new User() { Id = 3, Name = "Alice", Surname = "Alicefffdfd" },
-});
+        private readonly AppDbContext _context;
+
+        public UsersController(AppDbContext context)
+        {
+            _context = context;
+        }
 
 
         [HttpGet]
-        public IEnumerable<User> Get() => users;
+        public async Task<IEnumerable<User>> GetAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
 
 
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var product = users.SingleOrDefault(p => p.Id == id);
-
-            if (product == null)
+            var distributor = await _context.Users.FindAsync(id);
+            if (distributor == null)
             {
                 return NotFound();
             }
-
-            return Ok(product);
+            return Ok(distributor);
         }
-
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            users.Remove(users.SingleOrDefault(p => p.Id == id));
-            return Ok();
-        }
-        
-
-        [HttpPost]
-        public IActionResult Post([FromBody] User newUser)
-        {
-            if (newUser == null)
-            {
-                return BadRequest("Invalid data");
-            }
-
-            newUser.Id = users.Max(p => p.Id) + 1;
-
-            users.Add(newUser);
-
-            return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
-        }
-
-
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] User updatedUser)
-        {
-            if (updatedUser == null)
-            {
-                return BadRequest("Invalid data");
-            }
-
-            var existingUser = users.SingleOrDefault(p => p.Id == id);
-
-            if (existingUser == null)
-            {
-                return NotFound();
-            }
-
-            // Обновляем данные пользователя
-            existingUser.Name = updatedUser.Name;
-            existingUser.Surname = updatedUser.Surname;
-
-            return Ok(existingUser);
-        }
-
-
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
     }
 }
