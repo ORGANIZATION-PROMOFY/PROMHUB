@@ -19,10 +19,7 @@ const Company = ({ idCompany, idShop }) => {
 
   return companyData ? (
     <View style={styles.container}>
-      <Image
-        source={{ uri: `http://192.168.1.18:5275/img/${companyData.photo}` }}
-        style={styles.img}
-      />
+      <Image source={{ uri: companyData.photo }} style={styles.img} />
       <View style={styles.textBlock}>
         <Text style={styles.companyName}>{companyData.name}</Text>
         <Shop idShop={idShop} />
