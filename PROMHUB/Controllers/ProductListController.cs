@@ -36,17 +36,48 @@ namespace PROMHUB.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] ProductList productList)
+        public async Task<IActionResult> PostAsync([FromBody] ProductListInputModel productListInput)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.ProductList.Add(productList);
+            var newProductList = new ProductList
+            {
+                Quantity = productListInput.Quantity,
+                UserId = productListInput.UserId,
+                ProductId = productListInput.ProductId
+            };
+
+            _context.ProductList.Add(newProductList);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAsync", new { id = productList.Id }, productList);
+            return CreatedAtAction("GetAsync", new { id = newProductList.Id }, newProductList);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id, [FromBody] ProductListInputModel productListInput)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var productListToUpdate = await _context.ProductList.FindAsync(id);
+            if (productListToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            productListToUpdate.Quantity = productListInput.Quantity;
+            productListToUpdate.UserId = productListInput.UserId;
+            productListToUpdate.ProductId = productListInput.ProductId;
+
+            _context.ProductList.Update(productListToUpdate);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]

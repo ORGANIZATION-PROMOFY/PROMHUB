@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace PROMHUB.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTableProductList : Migration
+    public partial class AddProductListTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,14 +42,12 @@ namespace PROMHUB.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ProductList_ProductId",
                 table: "ProductList",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductList_UserId",
                 table: "ProductList",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
         }
 
         /// <inheritdoc />

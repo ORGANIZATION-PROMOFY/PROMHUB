@@ -5,7 +5,7 @@
 namespace PROMHUB.Migrations
 {
     /// <inheritdoc />
-    public partial class AddProductListAction : Migration
+    public partial class UpdateProductListController : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

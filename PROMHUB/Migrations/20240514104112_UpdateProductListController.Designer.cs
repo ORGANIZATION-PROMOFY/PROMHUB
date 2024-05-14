@@ -11,8 +11,8 @@ using PROMHUB.Data;
 namespace PROMHUB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240509094115_AddTableProductList")]
-    partial class AddTableProductList
+    [Migration("20240514104112_UpdateProductListController")]
+    partial class UpdateProductListController
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -150,11 +150,9 @@ namespace PROMHUB.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("ProductList");
                 });

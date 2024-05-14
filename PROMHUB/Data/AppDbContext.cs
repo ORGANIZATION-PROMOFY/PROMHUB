@@ -37,5 +37,16 @@ namespace PROMHUB.Data
         public DbSet<Product> Product { get; set; }
 
         public DbSet<ProductList> ProductList { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductList>()
+                .HasIndex(pl => pl.UserId)
+                .IsUnique(false);
+
+            modelBuilder.Entity<ProductList>()
+                .HasIndex(pl => pl.ProductId)
+                .IsUnique(false);
+        }
     }
 }
