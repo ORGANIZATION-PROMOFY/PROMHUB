@@ -11,7 +11,7 @@ using PROMHUB.Data;
 namespace PROMHUB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240512094031_AddProductListTable")]
+    [Migration("20240515112115_AddProductListTable")]
     partial class AddProductListTable
     {
         /// <inheritdoc />

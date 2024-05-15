@@ -11,6 +11,17 @@ namespace PROMHUB.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_ProductShop_Company_CompanyId",
+                table: "ProductShop");
+
+            migrationBuilder.DropIndex(
+                name: "IX_ProductShop_CompanyId",
+                table: "ProductShop");
+
+            migrationBuilder.DropColumn(
+                name: "CompanyId",
+                table: "ProductShop");
 
             migrationBuilder.CreateTable(
                 name: "ProductList",
@@ -56,6 +67,23 @@ namespace PROMHUB.Migrations
             migrationBuilder.DropTable(
                 name: "ProductList");
 
+            migrationBuilder.AddColumn<int>(
+                name: "CompanyId",
+                table: "ProductShop",
+                type: "integer",
+                nullable: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductShop_CompanyId",
+                table: "ProductShop",
+                column: "CompanyId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_ProductShop_Company_CompanyId",
+                table: "ProductShop",
+                column: "CompanyId",
+                principalTable: "Company",
+                principalColumn: "Id");
         }
     }
 }

@@ -21,17 +21,38 @@ namespace PROMHUB.Controllers
         [HttpGet]
         public async Task<IEnumerable<ProductList>> GetAsync()
         {
-            return await _context.ProductList.ToListAsync();
+            // Загружаем только базовые данные о записях ProductList без связанных сущностей User и Product
+            return await _context.ProductList
+                .Select(p => new ProductList
+                {
+                    Id = p.Id,
+                    Quantity = p.Quantity,
+                    UserId = p.UserId,
+                    ProductId = p.ProductId
+                })
+                .ToListAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var distributor = await _context.ProductList.FindAsync(id);
+            // Находим только нужную запись ProductList без связанных сущностей User и Product
+            var distributor = await _context.ProductList
+                .Where(p => p.Id == id)
+                .Select(p => new ProductList
+                {
+                    Id = p.Id,
+                    Quantity = p.Quantity,
+                    UserId = p.UserId,
+                    ProductId = p.ProductId
+                })
+                .FirstOrDefaultAsync();
+
             if (distributor == null)
             {
                 return NotFound();
             }
+
             return Ok(distributor);
         }
 
@@ -43,42 +64,36 @@ namespace PROMHUB.Controllers
                 return BadRequest(ModelState);
             }
 
+            var user = await _context.Users.FindAsync(productListInput.UserId);
+            var product = await _context.Product.FindAsync(productListInput.ProductId);
+
+
+            if (user == null || product == null)
+            {
+                return NotFound("User or product not found");
+            }
+
             var newProductList = new ProductList
             {
                 Quantity = productListInput.Quantity,
                 UserId = productListInput.UserId,
-                ProductId = productListInput.ProductId
+                ProductId = productListInput.ProductId,
+                User = user,
+                Product = product,
             };
 
             _context.ProductList.Add(newProductList);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAsync", new { id = newProductList.Id }, newProductList);
+            return StatusCode(201, new
+            {
+                message = "Resource created successfully",
+                id = newProductList.Id
+            });
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(int id, [FromBody] ProductListInputModel productListInput)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            var productListToUpdate = await _context.ProductList.FindAsync(id);
-            if (productListToUpdate == null)
-            {
-                return NotFound();
-            }
 
-            productListToUpdate.Quantity = productListInput.Quantity;
-            productListToUpdate.UserId = productListInput.UserId;
-            productListToUpdate.ProductId = productListInput.ProductId;
-
-            _context.ProductList.Update(productListToUpdate);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
