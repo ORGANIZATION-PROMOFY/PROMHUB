@@ -93,7 +93,43 @@ namespace PROMHUB.Controllers
         }
 
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id, [FromBody] ProductListInputModel productListInput)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            var productList = await _context.ProductList.FindAsync(id);
+            if (productList == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Users.FindAsync(productListInput.UserId);
+            var product = await _context.Product.FindAsync(productListInput.ProductId);
+
+            if (user == null || product == null)
+            {
+                return NotFound("User or product not found");
+            }
+
+            productList.Quantity = productListInput.Quantity;
+            productList.UserId = productListInput.UserId;
+            productList.ProductId = productListInput.ProductId;
+            productList.User = user;
+            productList.Product = product;
+
+            _context.ProductList.Update(productList);
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Resource updated successfully",
+                id = productList.Id
+            });
+        }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
